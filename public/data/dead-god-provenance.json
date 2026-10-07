@@ -1,0 +1,22 @@
+{
+  "source": "https://dead-god.ru/",
+  "inputFilename": "Dead God — Профессиональный справочник The Binding of Isaac_ Repentance.html",
+  "inputSha256": "f3efecb90a7014cba10446de7834ae57fb75cba2c6e9eb108dc34aab1039f368",
+  "importedAt": "2026-10-07T16:42:02.274Z",
+  "recordCount": 1185,
+  "counts": {
+    "item": 719,
+    "trinket": 188,
+    "cards_and_runes": 97,
+    "pills": 50,
+    "transformation": 17,
+    "pickup": 40,
+    "environment": 74
+  },
+  "gameItemsMatched": 718,
+  "linkedReferences": 6948,
+  "missingIllustrations": 1,
+  "unresolvedReferences": [],
+  "scope": "All item-data entries and settings present in the user-provided homepage HTML. Separate pages and companion saved-resource files were not included in this upload.",
+  "sourceAuthorizedByUser": true
+}

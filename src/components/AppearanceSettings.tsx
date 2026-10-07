@@ -1,0 +1,15 @@
+import { BOARD_THEMES } from '../lib/board';
+import type { BoardPreferences, Item } from '../types';
+
+export default function AppearanceSettings({ preferences, onChange, items }: { preferences: BoardPreferences; onChange: (next: BoardPreferences) => void; items: Item[] }) {
+  const set = <K extends keyof BoardPreferences>(key: K, value: BoardPreferences[K]) => onChange({ ...preferences, [key]: value });
+  return <div className="appearance-settings">
+    <div className="settings-grid"><label>Группировать по<select aria-label="Группировать по" value={preferences.groupBy} onChange={e => set('groupBy', e.target.value as BoardPreferences['groupBy'])}><option value="none">Без группировки</option><option value="type">Категории</option><option value="quality">Качеству</option>{items.some(i => i.pools?.length) && <option value="pool">Пулу</option>}{items.some(i => i.collections?.length) && <option value="collection">Коллекции</option>}{items.some(i => i.transformations?.length) && <option value="transformation">Превращению</option>}{items.some(i => i.achievement) && <option value="achievement">Достижению</option>}</select></label>
+      <label>Сортировка<select aria-label="Сортировка поля" value={preferences.sort} onChange={e => set('sort', e.target.value as BoardPreferences['sort'])}><option value="random">Случайный порядок</option><option value="id">По ID</option><option value="name">По названию</option><option value="quality">По качеству</option></select></label>
+      <label>Названия предметов<select aria-label="Язык названий" value={preferences.nameLanguage} onChange={e => set('nameLanguage', e.target.value as 'en' | 'ru')}><option value="en">Оригинал</option><option value="ru">Русский перевод</option></select></label>
+      <label>Исключённые карточки<select aria-label="Стиль исключения" value={preferences.excludedStyle} onChange={e => set('excludedStyle', e.target.value as BoardPreferences['excludedStyle'])}><option value="flip">Переворачивать</option><option value="dim">Затемнять</option><option value="hide">Скрывать</option></select></label>
+    </div>
+    <div className="appearance-checkboxes"><label className="checkbox-row"><input type="checkbox" checked={preferences.showQuality} onChange={e => set('showQuality', e.target.checked)} /><span>Качество на карточках</span></label><label className="checkbox-row"><input type="checkbox" checked={preferences.showIds} onChange={e => set('showIds', e.target.checked)} /><span>Показывать ID</span></label><label className="checkbox-row"><input type="checkbox" checked={preferences.iconGrid} onChange={e => set('iconGrid', e.target.checked)} /><span>Иконки по сетке</span></label></div>
+    <div className="theme-picker"><span>Цвет поля</span><div>{BOARD_THEMES.map(theme => <button type="button" key={theme.id} style={{ background: theme.color }} className={preferences.theme === theme.id ? 'selected' : ''} aria-label={`Тема: ${theme.name}`} aria-pressed={preferences.theme === theme.id} title={theme.name} onClick={() => set('theme', theme.id)} />)}</div></div>
+  </div>;
+}

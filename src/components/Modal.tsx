@@ -13,6 +13,10 @@ export default function Modal({ title, onClose, children, wide = false }: { titl
     document.body.style.overflow = 'hidden';
     ref.current?.focus();
     const handleKey = (event: KeyboardEvent) => {
+      // Updating a description can remove the focused link. The topmost dialog
+      // must still handle Escape and recover focus with Tab in that case.
+      const dialogs = document.querySelectorAll('[role="dialog"]');
+      if (dialogs[dialogs.length - 1] !== ref.current) return;
       if (event.key === 'Escape') closeRef.current();
       if (event.key !== 'Tab') return;
       const focusable = ref.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], [tabindex="0"]');
@@ -20,7 +24,7 @@ export default function Modal({ title, onClose, children, wide = false }: { titl
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (event.shiftKey && (document.activeElement === first || document.activeElement === ref.current)) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && (document.activeElement === last || document.activeElement === ref.current)) { event.preventDefault(); first.focus(); }
+      else if (!event.shiftKey && (document.activeElement === last || document.activeElement === ref.current || !ref.current?.contains(document.activeElement))) { event.preventDefault(); first.focus(); }
     };
     document.addEventListener('keydown', handleKey);
     return () => { document.body.style.overflow = oldOverflow; document.removeEventListener('keydown', handleKey); previous?.focus(); };

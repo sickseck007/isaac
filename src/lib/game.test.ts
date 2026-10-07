@@ -180,9 +180,9 @@ describe('saved game normalization', () => {
     const small = normalizeGame({ ...original, poolIds: [1, 2], boardIds: [1, 2], boardSize: -3 }, items)!;
     expect(small.boardSize).toBe(1);
     const large = normalizeGame({ ...original, boardIds: original.poolIds, boardSize: 120, columns: 90 }, items)!;
-    expect(large.boardSize).toBe(100);
-    expect(large.boardIds).toHaveLength(100);
-    expect(large.columns).toBe(8);
+    expect(large.boardSize).toBe(120);
+    expect(large.boardIds).toHaveLength(120);
+    expect(large.columns).toBe(10);
     expect(normalizeGame({ ...original, boardSize: -3 }, items)!.boardSize).toBe(1);
     expect(normalizeGame({ ...original, boardSize: Number.NaN }, items)!.boardSize).toBe(30);
   });

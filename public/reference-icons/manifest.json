@@ -1,0 +1,1130 @@
+[
+  {
+    "key": "item-474",
+    "icon": "reference-icons/item-474.png",
+    "source": "Broken_Glass_Cannon.png",
+    "sha256": "b8bec3410d33e07d422f1712d4da1c597ec9371129181a158a74eda7ef40b37f"
+  },
+  {
+    "key": "trinket-1",
+    "icon": "reference-icons/trinket-1.png",
+    "source": "Swallowed_Penny.png",
+    "sha256": "d49850c9e81623b3d049f9cc32823024ce722ed0838bc1c003f012e582a61c60"
+  },
+  {
+    "key": "trinket-2",
+    "icon": "reference-icons/trinket-2.png",
+    "source": "Petrified_Poop.png",
+    "sha256": "7d3db96d4fe4a4017dd0fd361f7a395223e7000de04304f273c612dfdc6dd3eb"
+  },
+  {
+    "key": "trinket-3",
+    "icon": "reference-icons/trinket-3.png",
+    "source": "AAA_Battery.png",
+    "sha256": "1e7c5dc7e7b76ccb8a736993aa49ceebe275eec3b9702572f6491f7d1858cbfd"
+  },
+  {
+    "key": "trinket-4",
+    "icon": "reference-icons/trinket-4.png",
+    "source": "Broken_Remote.png",
+    "sha256": "dff44004b75cf55c22a401fd3ed60bdeb7eef229aee627425fbee9c95e3ab274"
+  },
+  {
+    "key": "trinket-5",
+    "icon": "reference-icons/trinket-5.png",
+    "source": "Purple_Heart.png",
+    "sha256": "23957189aca375b7bd665e457b6607f0243fdb109e1c01b88823142caabd972a"
+  },
+  {
+    "key": "trinket-6",
+    "icon": "reference-icons/trinket-6.png",
+    "source": "Broken_Magnet.png",
+    "sha256": "13da2eab650edea5fc3f10a6c680cc4ea04070f08a75d74253f46183ed159805"
+  },
+  {
+    "key": "trinket-7",
+    "icon": "reference-icons/trinket-7.png",
+    "source": "Rosary_Bead.png",
+    "sha256": "b92bdc6abff08afb2c0dd7fa5ffdd81e2bfa01924fc1b7d9b1786115d02b7c08"
+  },
+  {
+    "key": "trinket-8",
+    "icon": "reference-icons/trinket-8.png",
+    "source": "Cartridge.png",
+    "sha256": "d76375fa3edbe40d4e285c53b93d904ab0dfe25b945e7eefa8cc3b3d61fc8860"
+  },
+  {
+    "key": "trinket-9",
+    "icon": "reference-icons/trinket-9.png",
+    "source": "Pulse_Worm.png",
+    "sha256": "19c601f04005ccbd2679ca42a90ce009f27899631d797580786e9de4e48dc81e"
+  },
+  {
+    "key": "trinket-10",
+    "icon": "reference-icons/trinket-10.png",
+    "source": "Wiggle_Worm.png",
+    "sha256": "29ef4b120b26c7f42ff661b64a7e7ae75ea0864e2c89f6673b9440a80ac75c34"
+  },
+  {
+    "key": "trinket-11",
+    "icon": "reference-icons/trinket-11.png",
+    "source": "Ring_Worm.png",
+    "sha256": "b1651d95074d1f056f39ea6636bac40bc3ac91db2aa7bcdf8198ac87f66b811a"
+  },
+  {
+    "key": "trinket-12",
+    "icon": "reference-icons/trinket-12.png",
+    "source": "Flat_Worm.png",
+    "sha256": "b2742c94f53cc255a295f4a822abecf5672a7cc9e82e3f1892a188fcb64a2652"
+  },
+  {
+    "key": "trinket-13",
+    "icon": "reference-icons/trinket-13.png",
+    "source": "Store_Credit.png",
+    "sha256": "d41ddc8978753666228bc4f6b90b3275635398fb2ff74c09d596a0cafa7f895a"
+  },
+  {
+    "key": "trinket-14",
+    "icon": "reference-icons/trinket-14.png",
+    "source": "Callus.png",
+    "sha256": "106868c28cf9d95ab2dbe49fc0664d444f23cb34a332c14ad448db91cbad1ecd"
+  },
+  {
+    "key": "trinket-15",
+    "icon": "reference-icons/trinket-15.png",
+    "source": "Lucky_Rock.png",
+    "sha256": "fb858487c647b3a99879c1c6710b01599d617240ad0c2d451c0d59af1b206e80"
+  },
+  {
+    "key": "trinket-16",
+    "icon": "reference-icons/trinket-16.png",
+    "source": "Moms_Toenail.png",
+    "sha256": "3bda0ccecdf0295afac0e4bf0a29840d5195a795951a59c06e10ca9ceadb6628"
+  },
+  {
+    "key": "trinket-17",
+    "icon": "reference-icons/trinket-17.png",
+    "source": "Black_Lipstick.png",
+    "sha256": "f8ce54e4e7d4547b6e1f06943503297e642c6a05f7ae420498a925bccce36bfc"
+  },
+  {
+    "key": "trinket-18",
+    "icon": "reference-icons/trinket-18.png",
+    "source": "Bible_Tract.png",
+    "sha256": "0fca8cab8c0830042e206641fe7f267d77616b825e127befcc504a98a663dcbc"
+  },
+  {
+    "key": "trinket-19",
+    "icon": "reference-icons/trinket-19.png",
+    "source": "Paper_Clip.png",
+    "sha256": "45fe832fa477913dbf54f08ce55acf5c9050b63984af02dc0489cf11e3b32cfd"
+  },
+  {
+    "key": "trinket-20",
+    "icon": "reference-icons/trinket-20.png",
+    "source": "Monkey_Paw.png",
+    "sha256": "638a3f19a66e62050d14283818843366f047c8e86545a55f30427aaee7350fe3"
+  },
+  {
+    "key": "trinket-21",
+    "icon": "reference-icons/trinket-21.png",
+    "source": "Mysterious_Paper.png",
+    "sha256": "7d280f36b1f0fd322c1f9875c2af1377fc170598148760a85fbec4fb9d996b5e"
+  },
+  {
+    "key": "trinket-22",
+    "icon": "reference-icons/trinket-22.png",
+    "source": "Daemons_Tail.png",
+    "sha256": "70370bd69ab8f70ac982d99f34816ff34299cfbc1f1709d9bd750af8560e66af"
+  },
+  {
+    "key": "trinket-23",
+    "icon": "reference-icons/trinket-23.png",
+    "source": "Missing_Poster.png",
+    "sha256": "56a9cd9d890079c96c109aba6c5d30d1299e57e9d383a1aa19f8604f09aa873a"
+  },
+  {
+    "key": "trinket-24",
+    "icon": "reference-icons/trinket-24.png",
+    "source": "Butt_Penny.png",
+    "sha256": "3f353e75e13ba0a699ef8b611a5cd5a4e809c91b6f970064bc3f1b5ca8b5db04"
+  },
+  {
+    "key": "trinket-25",
+    "icon": "reference-icons/trinket-25.png",
+    "source": "Mysterious_Candy.png",
+    "sha256": "6000f83a0db6e44d056fd3957bda1ec6df60006df028f37b732bd6bfcfc86335"
+  },
+  {
+    "key": "trinket-26",
+    "icon": "reference-icons/trinket-26.png",
+    "source": "Hook_Worm.png",
+    "sha256": "ad29c565c2e166f63c0725cc30ef75216fe662dea12a484cf70cd46e497a7e34"
+  },
+  {
+    "key": "trinket-27",
+    "icon": "reference-icons/trinket-27.png",
+    "source": "Whip_Worm.png",
+    "sha256": "67c7814e3ecc2d2f4372f36447a062f63393143c3c03f1d3b740b8155b593faa"
+  },
+  {
+    "key": "trinket-28",
+    "icon": "reference-icons/trinket-28.png",
+    "source": "Broken_Ankh.png",
+    "sha256": "99906535b2c4fce3ce12cc4de49f4f1fe259d538eff29960996d37d55e209fef"
+  },
+  {
+    "key": "trinket-29",
+    "icon": "reference-icons/trinket-29.png",
+    "source": "Fish_Head.png",
+    "sha256": "08c29fc6dd455ae04b14f778e64bd93a2c0ddeca49ef4d2c8cbb536fd4e3191b"
+  },
+  {
+    "key": "trinket-30",
+    "icon": "reference-icons/trinket-30.png",
+    "source": "Pinky_Eye.png",
+    "sha256": "5c2093314ca472f58006e309b3d7b72a8a20dbdcaf7ccbbecae50863fd1c46cd"
+  },
+  {
+    "key": "trinket-31",
+    "icon": "reference-icons/trinket-31.png",
+    "source": "Push_Pin.png",
+    "sha256": "5e2779f23270ee038af18a1a8fefcff6eb388d08e80b4dc6f4e9bf17cadb8afe"
+  },
+  {
+    "key": "trinket-32",
+    "icon": "reference-icons/trinket-32.png",
+    "source": "Liberty_Cap.png",
+    "sha256": "a68cefcd957f313472f43825b10fe9423139a2533315805848d8460613e19d25"
+  },
+  {
+    "key": "trinket-33",
+    "icon": "reference-icons/trinket-33.png",
+    "source": "Umbilical_Cord.png",
+    "sha256": "fb55e660a768a6fc8fa13ace7a91422545c765fd2cfae778f6af2990a6e13d5a"
+  },
+  {
+    "key": "trinket-34",
+    "icon": "reference-icons/trinket-34.png",
+    "source": "Childs_Heart.png",
+    "sha256": "000bfad15162856ca34377ac5c32d6838a3bd3610f7d7ae5fdcdcc192498036f"
+  },
+  {
+    "key": "trinket-35",
+    "icon": "reference-icons/trinket-35.png",
+    "source": "Curved_Horn.png",
+    "sha256": "c271386a987ebd87c9eb99a74b6f2d935627178cffd3f6b78da34ba3730e660a"
+  },
+  {
+    "key": "trinket-36",
+    "icon": "reference-icons/trinket-36.png",
+    "source": "Rusted_Key.png",
+    "sha256": "2288f4bd992503dcfc57bcb5865e215f7bd9c136486312d58872383cf6326e4f"
+  },
+  {
+    "key": "trinket-37",
+    "icon": "reference-icons/trinket-37.png",
+    "source": "Goat_Hoof.png",
+    "sha256": "bdfe7052e76e17ed5b03bb6042e042e17ffeadb72ad0e4d4f09ee3cca51869a6"
+  },
+  {
+    "key": "trinket-38",
+    "icon": "reference-icons/trinket-38.png",
+    "source": "Moms_Pearl.png",
+    "sha256": "8dca1974d0553669bcc8b28538b072e60fbf48dc7933dc05ee0908e5172cecd1"
+  },
+  {
+    "key": "trinket-39",
+    "icon": "reference-icons/trinket-39.png",
+    "source": "Cancer.png",
+    "sha256": "858b133dcacdcd10de27ad44224f75c780c75e8d01bf93cc5fc9a2609b72ad89"
+  },
+  {
+    "key": "trinket-40",
+    "icon": "reference-icons/trinket-40.png",
+    "source": "Red_Patch.png",
+    "sha256": "88ef6253f426ffbec4dc709f5c92ae80338b1664b26339c1bcbe7707a416a9f6"
+  },
+  {
+    "key": "trinket-41",
+    "icon": "reference-icons/trinket-41.png",
+    "source": "Match_Stick.png",
+    "sha256": "d950841b2daf7c73b704d23b17244c153da2e4d1854a75f022a04c09eda3553a"
+  },
+  {
+    "key": "trinket-42",
+    "icon": "reference-icons/trinket-42.png",
+    "source": "Lucky_Toe.png",
+    "sha256": "4bd55fbb93987cf7944f83a7c40d76ffd1ca2b11a86207b239da129b7cf01545"
+  },
+  {
+    "key": "trinket-43",
+    "icon": "reference-icons/trinket-43.png",
+    "source": "Cursed_Skull.png",
+    "sha256": "7dd043609c43c4b22215707ca402d471a63c9f8fcf5d26cd32ec15951a67b9a6"
+  },
+  {
+    "key": "trinket-44",
+    "icon": "reference-icons/trinket-44.png",
+    "source": "Safety_Cap.png",
+    "sha256": "4f3cf1f4af2a3a0e149dbb8053f2296f7a63b230c34f57b5922ecaf7deb45064"
+  },
+  {
+    "key": "trinket-45",
+    "icon": "reference-icons/trinket-45.png",
+    "source": "Ace_of_Spades.png",
+    "sha256": "b3bb4c0b4500857341ae1500404781ebb101d9fdd442659c86698999d863412c"
+  },
+  {
+    "key": "trinket-46",
+    "icon": "reference-icons/trinket-46.png",
+    "source": "Isaacs_Fork.png",
+    "sha256": "57bfb12cdedbeb8dcf7fb2b4c07329ff3f497f3e2d6b34385c840971eb2e54e3"
+  },
+  {
+    "key": "trinket-48",
+    "icon": "reference-icons/trinket-48.png",
+    "source": "A_Missing_Page.png",
+    "sha256": "37a6e92078f2228a15cd10714c8ac76d0662a71fa8bb95a82c31b5752930c51b"
+  },
+  {
+    "key": "trinket-49",
+    "icon": "reference-icons/trinket-49.png",
+    "source": "Bloody_Penny.png",
+    "sha256": "e6cfd34806776409e6377cad7faaf05ef074473fb1e116fd427170d32ce2481b"
+  },
+  {
+    "key": "trinket-50",
+    "icon": "reference-icons/trinket-50.png",
+    "source": "Burnt_Penny.png",
+    "sha256": "463645ddfc83deb536b74f0ee7d09ec0c5862a1d60dcf85748a833d6d67a9210"
+  },
+  {
+    "key": "trinket-51",
+    "icon": "reference-icons/trinket-51.png",
+    "source": "Flat_Penny.png",
+    "sha256": "f520be8262188bc80c1d177f117cbe9457e0061b2a6bb6a43d81d86d660209e4"
+  },
+  {
+    "key": "trinket-52",
+    "icon": "reference-icons/trinket-52.png",
+    "source": "Counterfeit_Penny.png",
+    "sha256": "87bdbc8a21a27e0181c233d8a75833a3652fd3a55777f8656ab6d5b20f14e9b5"
+  },
+  {
+    "key": "trinket-53",
+    "icon": "reference-icons/trinket-53.png",
+    "source": "Tick.png",
+    "sha256": "71fcc56338b6629599f5dbcf6f7e3b6dfb1219387b99d1c8e27b912e004a79e6"
+  },
+  {
+    "key": "trinket-54",
+    "icon": "reference-icons/trinket-54.png",
+    "source": "Isaacs_Head.png",
+    "sha256": "501a833f8657d06f2b1d2c7aa6d79d39c3b57cae0fbec0616bb60616baf567cd"
+  },
+  {
+    "key": "trinket-55",
+    "icon": "reference-icons/trinket-55.png",
+    "source": "Maggys_Faith.png",
+    "sha256": "12cbe03564daed6b99a33107faac05fed717c51a3cdb761a9bfa61805a114dae"
+  },
+  {
+    "key": "trinket-56",
+    "icon": "reference-icons/trinket-56.png",
+    "source": "Judas_Tongue.png",
+    "sha256": "4f4b5e64a09e7120937599b9ef8039ff363aab8c4042fa30faf8dda29def8ea3"
+  },
+  {
+    "key": "trinket-58",
+    "icon": "reference-icons/trinket-58.png",
+    "source": "Samsons_Lock.png",
+    "sha256": "1e0506d7e0b6e989bd81037a2b18056660b71c368f2dfebd3fdc569c6a0c507b"
+  },
+  {
+    "key": "trinket-59",
+    "icon": "reference-icons/trinket-59.png",
+    "source": "Cains_Eye.png",
+    "sha256": "933c12596a16cdd403a87dbd43866eb67f8e12cac4906d0af255b9081fe9836e"
+  },
+  {
+    "key": "trinket-60",
+    "icon": "reference-icons/trinket-60.png",
+    "source": "Eves_Bird_Foot.png",
+    "sha256": "0b797cdccd7b78400cb9d74872ee2c4f0154e498d0e11cc047840966bf2f8676"
+  },
+  {
+    "key": "trinket-61",
+    "icon": "reference-icons/trinket-61.png",
+    "source": "The_Left_Hand.png",
+    "sha256": "4c0a8857f36c32d01e55077c704df1138728f0caa6bfe032a2856e73da6fbb69"
+  },
+  {
+    "key": "trinket-62",
+    "icon": "reference-icons/trinket-62.png",
+    "source": "Shiny_Rock.png",
+    "sha256": "99bb34c92b9a2d4e54c9f85d3a25ee335690c3d2a1238bf07343a70fa2898ab8"
+  },
+  {
+    "key": "trinket-63",
+    "icon": "reference-icons/trinket-63.png",
+    "source": "Safety_Scissors.png",
+    "sha256": "20baa5b4bc0d6d95e8daca70722bb5ac6c4f118d12726060ba761f41a86d3a13"
+  },
+  {
+    "key": "trinket-64",
+    "icon": "reference-icons/trinket-64.png",
+    "source": "Rainbow_Worm.png",
+    "sha256": "fa01d6c182658477dabe78743e85d5f106be297d8a952f158c569fdaf338f9e6"
+  },
+  {
+    "key": "trinket-65",
+    "icon": "reference-icons/trinket-65.png",
+    "source": "Tape_Worm.png",
+    "sha256": "f057a27d10991549f4c4232df2e695b561e525ad92745f6a20e18ce8833ddb67"
+  },
+  {
+    "key": "trinket-66",
+    "icon": "reference-icons/trinket-66.png",
+    "source": "Lazy_Worm.png",
+    "sha256": "872a324b42e4ad9328679931b25bd5aefb99d3f58a5437a4c1c6b87f1bd849e5"
+  },
+  {
+    "key": "trinket-67",
+    "icon": "reference-icons/trinket-67.png",
+    "source": "Cracked_Dice.png",
+    "sha256": "0b25e1267e73b8d9d9e4a94f2e14bead349d6ffe88e61018a08eeb0cc50fc6f2"
+  },
+  {
+    "key": "trinket-68",
+    "icon": "reference-icons/trinket-68.png",
+    "source": "Super_Magnet.png",
+    "sha256": "79de8ca6b25de2730ae580ca6b90033bfa1226961f996041ec879b99f419b18a"
+  },
+  {
+    "key": "trinket-69",
+    "icon": "reference-icons/trinket-69.png",
+    "source": "Faded_Polaroid.png",
+    "sha256": "7bfb71b46f895d1dfdef33b9a526d70ced178f34d8b4cf302dfefaaecfc41738"
+  },
+  {
+    "key": "trinket-70",
+    "icon": "reference-icons/trinket-70.png",
+    "source": "Louse.png",
+    "sha256": "5a3367ec80b8d2c3b2c5fab61ab05242b9ae3d9b45f22dadca4d1e38e7f6b548"
+  },
+  {
+    "key": "trinket-71",
+    "icon": "reference-icons/trinket-71.png",
+    "source": "Bobs_Bladder.png",
+    "sha256": "5d5ef6b56ae33a2071500de47849d7ed48ed774ea9489b2b79a1c1653e06c517"
+  },
+  {
+    "key": "trinket-72",
+    "icon": "reference-icons/trinket-72.png",
+    "source": "Watch_Battery.png",
+    "sha256": "a6d21b8151d1c40d1ec29819875b43ffe4e4c9e21e506e30b3d165967dc57cd5"
+  },
+  {
+    "key": "trinket-73",
+    "icon": "reference-icons/trinket-73.png",
+    "source": "Blasting_Cap.png",
+    "sha256": "7f7e3ad86c68f53ddfe81deb5bf23ca285de9c334614eed0491b13f5b98311e9"
+  },
+  {
+    "key": "trinket-74",
+    "icon": "reference-icons/trinket-74.png",
+    "source": "Stud_Finder.png",
+    "sha256": "975177b4b040dc857e878d6dbb6a4bea05d810966308ef3b49ad840b37eaaf8a"
+  },
+  {
+    "key": "trinket-75",
+    "icon": "reference-icons/trinket-75.png",
+    "source": "Error.png",
+    "sha256": "004d4e736060123a457a60b958cd087bb32587955acde8733b26fb3400fe5f75"
+  },
+  {
+    "key": "trinket-76",
+    "icon": "reference-icons/trinket-76.png",
+    "source": "Poker_Chip.png",
+    "sha256": "3bc49ebd64a60637f87f184ba3847db64b6cb49be1e1b0dd5e31ba7f1f5db83f"
+  },
+  {
+    "key": "trinket-77",
+    "icon": "reference-icons/trinket-77.png",
+    "source": "Blister.png",
+    "sha256": "25bea4b791104b130fd426feaca7e8b0db21fec4a5ec275f711460d6bd1f495e"
+  },
+  {
+    "key": "trinket-78",
+    "icon": "reference-icons/trinket-78.png",
+    "source": "Second_Hand.png",
+    "sha256": "bbdcb473c74983590f4d16ea6ab4e7924804c5a201162064c194443fb9b436d1"
+  },
+  {
+    "key": "trinket-79",
+    "icon": "reference-icons/trinket-79.png",
+    "source": "Endless_Nameless.png",
+    "sha256": "2a1487f4937a803c4e054a332a9213d65bdd5c89a5e6e92838af429e59d20cd5"
+  },
+  {
+    "key": "trinket-80",
+    "icon": "reference-icons/trinket-80.png",
+    "source": "Black_Feather.png",
+    "sha256": "31a02a665ddc886f939a34c2e0fe905538888665087f585fd503dac89d591d30"
+  },
+  {
+    "key": "trinket-81",
+    "icon": "reference-icons/trinket-81.png",
+    "source": "Blind_Rage.png",
+    "sha256": "bd753446b0669fac85827a07515237103e95f3e2206506b35bf4d1f097554c91"
+  },
+  {
+    "key": "trinket-82",
+    "icon": "reference-icons/trinket-82.png",
+    "source": "Golden_Horse_Shoe.png",
+    "sha256": "d884b52dbd8fdbdb42d85869b2e67ece348bbefbd11216c15525a6a73a71f9c9"
+  },
+  {
+    "key": "trinket-83",
+    "icon": "reference-icons/trinket-83.png",
+    "source": "Store_Key.png",
+    "sha256": "45a4c4b9c92efa545bcde4a1449122561c063f7eec13aef0a472b8dc73e60e2a"
+  },
+  {
+    "key": "trinket-84",
+    "icon": "reference-icons/trinket-84.png",
+    "source": "Rib_of_Greed.png",
+    "sha256": "608c0cd796e4a8063b42e6f3979fc731cb5886b3f205425edf4f609981c9f755"
+  },
+  {
+    "key": "trinket-85",
+    "icon": "reference-icons/trinket-85.png",
+    "source": "Karma.png",
+    "sha256": "be8ad23ccbdea9b17f4da9bb5f42b2113686618b2019e2bdbdf840dcef3404f0"
+  },
+  {
+    "key": "trinket-86",
+    "icon": "reference-icons/trinket-86.png",
+    "source": "Lil_Larva.png",
+    "sha256": "e196c0da3cf189ae0c93eedd3c917e3f9692a30093075c36b937df2b4fa573a2"
+  },
+  {
+    "key": "trinket-87",
+    "icon": "reference-icons/trinket-87.png",
+    "source": "Moms_Locket.png",
+    "sha256": "755f98a0fa4beb7c4c4012bae21744b880242037abc4bfc79f8f37d99bb92078"
+  },
+  {
+    "key": "trinket-88",
+    "icon": "reference-icons/trinket-88.png",
+    "source": "NO.png",
+    "sha256": "317ea41d63e43d118159910714744e7571a7cc001413a22a820da1932892b69f"
+  },
+  {
+    "key": "trinket-89",
+    "icon": "reference-icons/trinket-89.png",
+    "source": "Child_Leash.png",
+    "sha256": "fc227a31aab7d1273d99fbd6a52d0145aee4c8ec881a4b64cab7158d860b2abe"
+  },
+  {
+    "key": "trinket-90",
+    "icon": "reference-icons/trinket-90.png",
+    "source": "Brown_Cap.png",
+    "sha256": "b7e74b5c2cf60fd829853924f9ae78fe51067a55e883c3e57f49cacc3ccdad59"
+  },
+  {
+    "key": "trinket-91",
+    "icon": "reference-icons/trinket-91.png",
+    "source": "Meconium.png",
+    "sha256": "da118f8de9494cd716328a030668a435601a7a29b921548f8bf2c5ec49733f5b"
+  },
+  {
+    "key": "trinket-92",
+    "icon": "reference-icons/trinket-92.png",
+    "source": "Cracked_Crown.png",
+    "sha256": "ec7846ae5383938e02531c71eb979e9ca7b2022fb66c639bcd13d1aa7ae8ab42"
+  },
+  {
+    "key": "trinket-93",
+    "icon": "reference-icons/trinket-93.png",
+    "source": "Used_Diaper.png",
+    "sha256": "5efa7aec67a9c98e45484c2724875c4f9d05dd437d4ceae368d2255542d622b5"
+  },
+  {
+    "key": "trinket-94",
+    "icon": "reference-icons/trinket-94.png",
+    "source": "Fish_Tail.png",
+    "sha256": "40d5c318ac928f42264b16f2faf6bcc3f751cd716b7b72ed69bfd92799b05832"
+  },
+  {
+    "key": "trinket-95",
+    "icon": "reference-icons/trinket-95.png",
+    "source": "Black_Tooth.png",
+    "sha256": "e6f3e3f6aee09f15a16bb5294d215b60d9f7231176825c186539822890dde129"
+  },
+  {
+    "key": "trinket-96",
+    "icon": "reference-icons/trinket-96.png",
+    "source": "Ouroboros_Worm.png",
+    "sha256": "1a492d78dd697fd97c7fe5c631d5fac0c0b9328e5818c18329780e4b965c6a61"
+  },
+  {
+    "key": "trinket-97",
+    "icon": "reference-icons/trinket-97.png",
+    "source": "Tonsil.png",
+    "sha256": "91e81ecb7b32235c546ecd6281dfef23b92b199978ce1de0184064a938df7eb5"
+  },
+  {
+    "key": "trinket-98",
+    "icon": "reference-icons/trinket-98.png",
+    "source": "Nose_Goblin.png",
+    "sha256": "e1b867464e3f2936cd63658182d4f0a4573b4b4dc9a36b94dc3e12f73ac519ae"
+  },
+  {
+    "key": "trinket-99",
+    "icon": "reference-icons/trinket-99.png",
+    "source": "Super_Ball.png",
+    "sha256": "b428e646ae100399ca47e5146292b13a157a5ce1cbd780960605e2e6a448ffae"
+  },
+  {
+    "key": "trinket-100",
+    "icon": "reference-icons/trinket-100.png",
+    "source": "Vibrant_Bulb.png",
+    "sha256": "ffb8f8f31a67a8044c3e32da771fe26546889d489e2202b9e998bca45bf051f3"
+  },
+  {
+    "key": "trinket-101",
+    "icon": "reference-icons/trinket-101.png",
+    "source": "Dim_Bulb.png",
+    "sha256": "7046c020cdab40cf493aa165b96753c43371de49b0955a696650ac01cfbbe4fb"
+  },
+  {
+    "key": "trinket-102",
+    "icon": "reference-icons/trinket-102.png",
+    "source": "Fragmented_Card.png",
+    "sha256": "dfa09ff659e5c42826b7831a064a572d442a792a7b045b655c4592593baf5433"
+  },
+  {
+    "key": "trinket-103",
+    "icon": "reference-icons/trinket-103.png",
+    "source": "Equality.png",
+    "sha256": "48567cb26c47ecf8229acb9d2d64a3070e098ae120ea98586758dce499cd164b"
+  },
+  {
+    "key": "trinket-104",
+    "icon": "reference-icons/trinket-104.png",
+    "source": "Wish_Bone.png",
+    "sha256": "c35b984a45d2afbb62a3a048c2bf468353d73b3ff816be36a8ffb6266a82a16b"
+  },
+  {
+    "key": "trinket-105",
+    "icon": "reference-icons/trinket-105.png",
+    "source": "Bag_Lunch.png",
+    "sha256": "03d9128370963921f7987355ededd4dc4014bc9052128eee33a64166e880ca86"
+  },
+  {
+    "key": "trinket-106",
+    "icon": "reference-icons/trinket-106.png",
+    "source": "Lost_Cork.png",
+    "sha256": "c75d80293c6792f2a5fec97050539d46e90250271014511b481228a34b5739e4"
+  },
+  {
+    "key": "trinket-107",
+    "icon": "reference-icons/trinket-107.png",
+    "source": "Crow_Heart.png",
+    "sha256": "72cad7263716914ce40d5eb662a3f20955ec0754f8d9e4099111e5813a86763d"
+  },
+  {
+    "key": "trinket-108",
+    "icon": "reference-icons/trinket-108.png",
+    "source": "Walnut.png",
+    "sha256": "53b66bcbd16b3dd90add0e9c9a3a3d99698e994fd1e2311231d557553daa4465"
+  },
+  {
+    "key": "trinket-109",
+    "icon": "reference-icons/trinket-109.png",
+    "source": "Duct_Tape.png",
+    "sha256": "a6f77653364cb65a8928427694f0eb9e2b7d606c77a9e6abd327ad3f9e418c59"
+  },
+  {
+    "key": "trinket-110",
+    "icon": "reference-icons/trinket-110.png",
+    "source": "Silver_Dollar.png",
+    "sha256": "e35714d708ab0534c8c70dca45bbbfd61ce1fd07e8b389b65f6a618d0df2d600"
+  },
+  {
+    "key": "trinket-111",
+    "icon": "reference-icons/trinket-111.png",
+    "source": "Bloody_Crown.png",
+    "sha256": "4d459aeedf5c5c444ead279a15af8cd691b23b76f923d408afa81aafb5935136"
+  },
+  {
+    "key": "trinket-112",
+    "icon": "reference-icons/trinket-112.png",
+    "source": "Pay_to_Win.png",
+    "sha256": "1dc1fa49284efe2a25d4bff6517c601d6a190aff6b3a35a7ca391fec63ec3494"
+  },
+  {
+    "key": "trinket-113",
+    "icon": "reference-icons/trinket-113.png",
+    "source": "Locust_of_War.png",
+    "sha256": "d67f315c21b5c2d9ba1c2c059e375c6c7bfac64d7160009d287ba708bea87c05"
+  },
+  {
+    "key": "trinket-114",
+    "icon": "reference-icons/trinket-114.png",
+    "source": "Locust_of_Pestilence.png",
+    "sha256": "3086b475155e3775b6a6798d7db810ec375a54b36067b1063bf419546c6f5994"
+  },
+  {
+    "key": "trinket-115",
+    "icon": "reference-icons/trinket-115.png",
+    "source": "Locust_of_Famine.png",
+    "sha256": "b250aa96ebc4e433ea6a801330f8cb55df13be402e213da74c94abb9f53fc4c7"
+  },
+  {
+    "key": "trinket-116",
+    "icon": "reference-icons/trinket-116.png",
+    "source": "Locust_of_Death.png",
+    "sha256": "3bd9edc5cc26d5e6f7078521f39c28fb78524454f740e312beadbe759fc961cc"
+  },
+  {
+    "key": "trinket-117",
+    "icon": "reference-icons/trinket-117.png",
+    "source": "Locust_of_Conquest.png",
+    "sha256": "fcd78149c3375eb3ba4f15d18be3cb5aeceafe801154fa9a59e124b74de102eb"
+  },
+  {
+    "key": "trinket-118",
+    "icon": "reference-icons/trinket-118.png",
+    "source": "Bat_Wing.png",
+    "sha256": "792f71d08c1f0628736155e986140c0e54bd18d00fcceac2d3361841b3162dc3"
+  },
+  {
+    "key": "trinket-119",
+    "icon": "reference-icons/trinket-119.png",
+    "source": "Stem_Cell.png",
+    "sha256": "4d9c42b689dd0e479d9fb1f18cabd78d4bc4920375a8ab87f472c1adbd1c37e8"
+  },
+  {
+    "key": "trinket-120",
+    "icon": "reference-icons/trinket-120.png",
+    "source": "Hairpin.png",
+    "sha256": "d0719b264eaee779e1cbd0e24f1b3a2010c99b521288d15b31589cccf6458e6e"
+  },
+  {
+    "key": "trinket-121",
+    "icon": "reference-icons/trinket-121.png",
+    "source": "Wooden_Cross.png",
+    "sha256": "1111d64200f48f12bba2a9a670a836e8b9b3556ec1d3e30642514b9bb9ead665"
+  },
+  {
+    "key": "trinket-122",
+    "icon": "reference-icons/trinket-122.png",
+    "source": "Butter.png",
+    "sha256": "d926b8d05bb8e7ed942bac118781ef380936e99633a4e31647e08266aacdbebc"
+  },
+  {
+    "key": "trinket-123",
+    "icon": "reference-icons/trinket-123.png",
+    "source": "Filigree_Feather.png",
+    "sha256": "88c69e641e4586520d76d0d13be7d311c14e186fb241e5dfcba3a95c623ffcdc"
+  },
+  {
+    "key": "trinket-124",
+    "icon": "reference-icons/trinket-124.png",
+    "source": "Door_Stop.png",
+    "sha256": "d3adf541738f9ec99d83c1f635be2f713909f50bfe8712bddab9d1a2e6997956"
+  },
+  {
+    "key": "trinket-125",
+    "icon": "reference-icons/trinket-125.png",
+    "source": "Extension_Cord.png",
+    "sha256": "0deef6cb222bdb4cda21603754d68e32a885b3c4bd12133581189e01d5650fc0"
+  },
+  {
+    "key": "trinket-126",
+    "icon": "reference-icons/trinket-126.png",
+    "source": "Rotten_Penny.png",
+    "sha256": "cea2a691f0fac351717be85a2e5300ebe43dcd7600ed40ae14954d377b1af454"
+  },
+  {
+    "key": "trinket-127",
+    "icon": "reference-icons/trinket-127.png",
+    "source": "BabyBender.png",
+    "sha256": "2e2d48e891370ca6efe0ae12ebb871f30a58aef7e9109d4244550c3f24be97f0"
+  },
+  {
+    "key": "trinket-128",
+    "icon": "reference-icons/trinket-128.png",
+    "source": "Finger_Bone.png",
+    "sha256": "69c9b86022a676c6faf9fe943e88ab133d580d69772ea10c58c2bc28d3c21004"
+  },
+  {
+    "key": "trinket-129",
+    "icon": "reference-icons/trinket-129.png",
+    "source": "Jawbreaker.png",
+    "sha256": "c697c2fe4161873e1d8ed5575e4889215bdfc1a36112a3bfd91fea88f408c0ae"
+  },
+  {
+    "key": "trinket-130",
+    "icon": "reference-icons/trinket-130.png",
+    "source": "Chewed_Pen.png",
+    "sha256": "a730e427c781a3c87466cfb711d1f10aa095691215dd4f9653d33f960523cb99"
+  },
+  {
+    "key": "trinket-131",
+    "icon": "reference-icons/trinket-131.png",
+    "source": "Blessed_Penny.png",
+    "sha256": "5c9565902ab7f9444cc8f9ce3ef9ecbf898ad45e099cce94b229015656bcbbc8"
+  },
+  {
+    "key": "trinket-132",
+    "icon": "reference-icons/trinket-132.png",
+    "source": "Broken_Syringe.png",
+    "sha256": "b6260ceb37111ebd641cc362896551be762da51dc058632371bee39edc7e325d"
+  },
+  {
+    "key": "trinket-133",
+    "icon": "reference-icons/trinket-133.png",
+    "source": "Short_Fuse.png",
+    "sha256": "903f91ef8c15d70586a5f6f321447992af1b947c88de2466df564e673475bcd3"
+  },
+  {
+    "key": "trinket-134",
+    "icon": "reference-icons/trinket-134.png",
+    "source": "Gigante_Bean.png",
+    "sha256": "5aa0dbbbb1dc1d9863420517b1469af9eda18c3f07f3cf705f6069bd0af4881a"
+  },
+  {
+    "key": "trinket-135",
+    "icon": "reference-icons/trinket-135.png",
+    "source": "A_Lighter.png",
+    "sha256": "11c609e6c5766c805c00c09c4229dc734477f59963b90e8495302b36956032d3"
+  },
+  {
+    "key": "trinket-136",
+    "icon": "reference-icons/trinket-136.png",
+    "source": "Broken_Padlock.png",
+    "sha256": "090b5c9f4cf7058001f0c923aae916a93f95e8effe9d574f4563ffaa12422ee2"
+  },
+  {
+    "key": "trinket-137",
+    "icon": "reference-icons/trinket-137.png",
+    "source": "Myosotis.png",
+    "sha256": "0e3f45012a690d4375a509a931e273ca506b8468b6b3bb27ba515aed17dc668d"
+  },
+  {
+    "key": "trinket-139",
+    "icon": "reference-icons/trinket-139.png",
+    "source": "Teardrop_Charm.png",
+    "sha256": "db8607bd61197fb502f37190029721375ca29ff952f19e07868e9fe87d6a6971"
+  },
+  {
+    "key": "trinket-140",
+    "icon": "reference-icons/trinket-140.png",
+    "source": "Apple_of_Sodom.png",
+    "sha256": "5b4c78c6e30e2650c735ac093a8de9043d1c00bdf170375677b8bfaca1d5e672"
+  },
+  {
+    "key": "trinket-141",
+    "icon": "reference-icons/trinket-141.png",
+    "source": "Forgotten_Lullaby.png",
+    "sha256": "3b6a13d6daaf0978f6e532f0c5601bbd84a7f38bf10013cb5813e8901afff43a"
+  },
+  {
+    "key": "trinket-142",
+    "icon": "reference-icons/trinket-142.png",
+    "source": "Beths_Faith.png",
+    "sha256": "bb1e0fb622e5ea4fa36c788c184972d66220d8126739b51f33296022f5ff6cb1"
+  },
+  {
+    "key": "trinket-143",
+    "icon": "reference-icons/trinket-143.png",
+    "source": "Old_Capacitor.png",
+    "sha256": "9dbc8434c54e0a3c35498f7dd9a0971e5fe592ab89ea1d9aac24242423d99609"
+  },
+  {
+    "key": "trinket-144",
+    "icon": "reference-icons/trinket-144.png",
+    "source": "Brain_Worm.png",
+    "sha256": "ff4952e1c8256b1035373fdcea38cc4391a30f0c8a096a69eb5ffd4a9051caac"
+  },
+  {
+    "key": "trinket-145",
+    "icon": "reference-icons/trinket-145.png",
+    "source": "Perfection.png",
+    "sha256": "5c5294d854e76d53a84187bcaad665ead038ef1125ec0ca396cea37e4445fdb7"
+  },
+  {
+    "key": "trinket-146",
+    "icon": "reference-icons/trinket-146.png",
+    "source": "Devils_Crown.png",
+    "sha256": "60c108b1f527af586d100c3e973e3ed2a37dccc2f37b960b0e5c48cae65d81e7"
+  },
+  {
+    "key": "trinket-147",
+    "icon": "reference-icons/trinket-147.png",
+    "source": "Charged_Penny.png",
+    "sha256": "da1e87798763e8ff446f5212a6292bd28d791141e840c3f224b74ca50b82d172"
+  },
+  {
+    "key": "trinket-148",
+    "icon": "reference-icons/trinket-148.png",
+    "source": "Friendship_Necklace.png",
+    "sha256": "830e15f86d4d1855240e5bf0774d89d08dd98a0070a0900698005214d1ebc5eb"
+  },
+  {
+    "key": "trinket-149",
+    "icon": "reference-icons/trinket-149.png",
+    "source": "Panic_Button.png",
+    "sha256": "0168a7eb8d69df0ce7d95155d78d4f859587aad42abc69be3a4dd17f1e10436c"
+  },
+  {
+    "key": "trinket-150",
+    "icon": "reference-icons/trinket-150.png",
+    "source": "Blue_Key.png",
+    "sha256": "b212e24cb3c8d99d1aef4e1de3a69ad9c5af001b9fc8110bd6e85d47dff1df23"
+  },
+  {
+    "key": "trinket-151",
+    "icon": "reference-icons/trinket-151.png",
+    "source": "Flat_File.png",
+    "sha256": "e4150135dc25d5d7e1811821846e78e20a90873035436ef50424a89a558858c5"
+  },
+  {
+    "key": "trinket-152",
+    "icon": "reference-icons/trinket-152.png",
+    "source": "Telescope_Lens.png",
+    "sha256": "5952838f5196a174cb0aac15d4dcb3b4c93ebf7781fc7f62ee4f16d5b04a0d6e"
+  },
+  {
+    "key": "trinket-153",
+    "icon": "reference-icons/trinket-153.png",
+    "source": "Moms_Lock.png",
+    "sha256": "41aa899dd46e43abae04238e7b22ccae589e74e797403692ae1080b89bee1c70"
+  },
+  {
+    "key": "trinket-154",
+    "icon": "reference-icons/trinket-154.png",
+    "source": "Dice_Bag.png",
+    "sha256": "dda7b05bf2597ec7ad380358dca53fbb9f12cd1afbf7600d8e2725f7291c5354"
+  },
+  {
+    "key": "trinket-155",
+    "icon": "reference-icons/trinket-155.png",
+    "source": "Holy_Crown.png",
+    "sha256": "14899b60fab74bfc960ae8f37090e9bdef3ecb991bff8588b1d708f9ba12da7b"
+  },
+  {
+    "key": "trinket-156",
+    "icon": "reference-icons/trinket-156.png",
+    "source": "Mothers_Kiss.png",
+    "sha256": "c2c4f935cea80970b7e9e257b647c5466d00f6b9f06e08f6afad4dd8e7232b64"
+  },
+  {
+    "key": "trinket-157",
+    "icon": "reference-icons/trinket-157.png",
+    "source": "Torn_Card.png",
+    "sha256": "dcb686a2140f7cd835a50f1135cc7b3a43f695f20c4200bcf05f9dbdb74b4243"
+  },
+  {
+    "key": "trinket-158",
+    "icon": "reference-icons/trinket-158.png",
+    "source": "Torn_Pocket.png",
+    "sha256": "4e0eb3cc3bed099353e3ea88d432d1b0ceb21f13cec92e4531cf77398dc41b3c"
+  },
+  {
+    "key": "trinket-159",
+    "icon": "reference-icons/trinket-159.png",
+    "source": "Gilded_Key.png",
+    "sha256": "e864c837226becb9733fbefc0e0c1edbb9107dbb5f4cbbf76ec1b42bfa5d1faa"
+  },
+  {
+    "key": "trinket-160",
+    "icon": "reference-icons/trinket-160.png",
+    "source": "Lucky_Sack.png",
+    "sha256": "9dca2c0c6ea4b8426cf6ac8d1aa0ee9a2568057c11cfb1e90cf8884c1e046a38"
+  },
+  {
+    "key": "trinket-161",
+    "icon": "reference-icons/trinket-161.png",
+    "source": "Wicked_Crown.png",
+    "sha256": "909ce2234abe63708132a057f2595bef5778900c3092ca83c27338cc10e6315f"
+  },
+  {
+    "key": "trinket-162",
+    "icon": "reference-icons/trinket-162.png",
+    "source": "Azazels_Stump.png",
+    "sha256": "16288ff313b75068fdb837b89db43410caea4928df8a85d805b7df2c5f97f58c"
+  },
+  {
+    "key": "trinket-163",
+    "icon": "reference-icons/trinket-163.png",
+    "source": "Dingle_Berry.png",
+    "sha256": "28e66c4e175ad0ff8b51bf66f12e1126332599056ea0e041852836e628186398"
+  },
+  {
+    "key": "trinket-164",
+    "icon": "reference-icons/trinket-164.png",
+    "source": "Ring_Cap.png",
+    "sha256": "4878b90eee07b6c7ec6a99cd3de0e6194ed76658af009c66049c885d4ca2dee2"
+  },
+  {
+    "key": "trinket-165",
+    "icon": "reference-icons/trinket-165.png",
+    "source": "Nuh_Uh.png",
+    "sha256": "868a69dc897bc35c0e4668b0f7a8a6aaf34844b0267fe98617bc0371c6a27e6d"
+  },
+  {
+    "key": "trinket-166",
+    "icon": "reference-icons/trinket-166.png",
+    "source": "Modeling_Clay.png",
+    "sha256": "6371997c3355f14e62cf8c34514e6e21a4a0294d3d11ef480f21b1f836ca55ea"
+  },
+  {
+    "key": "trinket-167",
+    "icon": "reference-icons/trinket-167.png",
+    "source": "Polished_Bone.png",
+    "sha256": "5b18e0d5cbec1803413214f7833b656dec6205b2c9bd5e9b25e051948c2dc22d"
+  },
+  {
+    "key": "trinket-168",
+    "icon": "reference-icons/trinket-168.png",
+    "source": "Hollow_Heart.png",
+    "sha256": "8f76af424fa6125f5e8af99cf612c4931dfdfb81eaf10724d66700064c978232"
+  },
+  {
+    "key": "trinket-169",
+    "icon": "reference-icons/trinket-169.png",
+    "source": "Kids_Drawing.png",
+    "sha256": "1af8869b1645826cf481c3bb00d3d50aa02ede7c6f6b013e13c27ba2d4576047"
+  },
+  {
+    "key": "trinket-170",
+    "icon": "reference-icons/trinket-170.png",
+    "source": "Crystal_Key.png",
+    "sha256": "bc2bd6b2ac79d370e759dd7a3ef740f44a5140d294d3b641b737a3028190916a"
+  },
+  {
+    "key": "trinket-171",
+    "icon": "reference-icons/trinket-171.png",
+    "source": "Keepers_Bargain.png",
+    "sha256": "959bf2937fe751aec08c1efd9eb2896588e7f11562c879c9086964dc1b3c5ed1"
+  },
+  {
+    "key": "trinket-172",
+    "icon": "reference-icons/trinket-172.png",
+    "source": "Cursed_Penny.png",
+    "sha256": "90fe4386035b1b2022e43dc6c350a469845645d361bcb4c36d1ff7723e11a759"
+  },
+  {
+    "key": "trinket-173",
+    "icon": "reference-icons/trinket-173.png",
+    "source": "Your_Soul.png",
+    "sha256": "cdcbd4f4aef64074013f65aff941cdf40c3792790d6b02c8d0c5a760c1fe0e45"
+  },
+  {
+    "key": "trinket-174",
+    "icon": "reference-icons/trinket-174.png",
+    "source": "Number_Magnet.png",
+    "sha256": "438a5ca90fa910a5ef47baa952ffd1a2e8e4ce62288efb5ff809dae5525137e7"
+  },
+  {
+    "key": "trinket-175",
+    "icon": "reference-icons/trinket-175.png",
+    "source": "Strange_Key.png",
+    "sha256": "a9cc25756cef5cb2a1a7d40294203bd03ad6c4a3c3e926bff2ba90add88e6946"
+  },
+  {
+    "key": "trinket-176",
+    "icon": "reference-icons/trinket-176.png",
+    "source": "Lil_Clot.png",
+    "sha256": "a28eee857d73e62195864250ebf12d11e2ae2ce10002e7dcb9b61fc178fc62ff"
+  },
+  {
+    "key": "trinket-177",
+    "icon": "reference-icons/trinket-177.png",
+    "source": "Temporary_Tattoo.png",
+    "sha256": "87fbc9918f35148c4645f7d2afe28958ece45ccca17ceab94283cfb1099ff7e5"
+  },
+  {
+    "key": "trinket-178",
+    "icon": "reference-icons/trinket-178.png",
+    "source": "Swallowed_M80.png",
+    "sha256": "3b7a0b5a2bccc378a1cc47209930eb9c7f3afca44a9fa53e94ff6fa8dc4ce130"
+  },
+  {
+    "key": "trinket-179",
+    "icon": "reference-icons/trinket-179.png",
+    "source": "RC_Remote.png",
+    "sha256": "92d9343bbb76f61f38498e031d7e70e7b06db3edb07e6020d3a8af15daae9e6e"
+  },
+  {
+    "key": "trinket-180",
+    "icon": "reference-icons/trinket-180.png",
+    "source": "Found_Soul.png",
+    "sha256": "61fa9620ca3ec5d27850618e1400abfe863d453600328843281a1e3f330fb45c"
+  },
+  {
+    "key": "trinket-181",
+    "icon": "reference-icons/trinket-181.png",
+    "source": "Expansion_Pack.png",
+    "sha256": "e909f66abc7265f15c5e6fba76fbb3c6e8e41f3f58f8233f769cab7758e7b250"
+  },
+  {
+    "key": "trinket-182",
+    "icon": "reference-icons/trinket-182.png",
+    "source": "Beths_Essence.png",
+    "sha256": "6af224428aed00559023ac02997da3f327f97594a28917a7961acd439163f14b"
+  },
+  {
+    "key": "trinket-183",
+    "icon": "reference-icons/trinket-183.png",
+    "source": "The_Twins.png",
+    "sha256": "20ff4e81791d7145039bb63da6095090e72570793d765a7e7e5093753be0b73b"
+  },
+  {
+    "key": "trinket-184",
+    "icon": "reference-icons/trinket-184.png",
+    "source": "Adoption_Papers.png",
+    "sha256": "e636818e8f876bbc0e9a31183a2a72ce83b0f1b913b3be8730f5af2c81b9b82a"
+  },
+  {
+    "key": "trinket-185",
+    "icon": "reference-icons/trinket-185.png",
+    "source": "Cricket_Leg.png",
+    "sha256": "7c998850d46c56dc90446f14eb95566fece2932aeb89357765e23a634f16c332"
+  },
+  {
+    "key": "trinket-186",
+    "icon": "reference-icons/trinket-186.png",
+    "source": "Apollyons_Best_Friend.png",
+    "sha256": "06e01847ed1aaa92409621f67e30818a33b533b8fecc7488379cb724ce156578"
+  },
+  {
+    "key": "trinket-187",
+    "icon": "reference-icons/trinket-187.png",
+    "source": "Broken_Glasses.png",
+    "sha256": "943c09e2547d67ce6ca6a1037fd59f10f29473efb49a6dd21c0e2253208e1f70"
+  },
+  {
+    "key": "trinket-188",
+    "icon": "reference-icons/trinket-188.png",
+    "source": "Ice_Cube.png",
+    "sha256": "32abe01ce4d908d52c2fd92222e3d7c9c0887067526392b78ba17117302f424c"
+  },
+  {
+    "key": "trinket-189",
+    "icon": "reference-icons/trinket-189.png",
+    "source": "Sigil_of_Baphomet.png",
+    "sha256": "4eb9ef5b140395cfdad4da6cbddbc05798ed6e4ccd35aa4c81998a45ccbe1e16"
+  },
+  {
+    "key": "trinket-57",
+    "icon": "reference-icons/trinket-57.png",
+    "source": "Blue_Babys_Soul.png",
+    "sha256": "06a10cfe7d5d22b9d7073aa24a928d77a544db73d978e50fe1a861b4334fd03c"
+  }
+]

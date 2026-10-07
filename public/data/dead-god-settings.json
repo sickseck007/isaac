@@ -1,0 +1,594 @@
+{
+  "pools": [
+    {
+      "value": "treasure_room",
+      "label": "Treasure Room"
+    },
+    {
+      "value": "greed_treasure_room",
+      "label": "Greed Treasure Room"
+    },
+    {
+      "value": "shop",
+      "label": "Shop"
+    },
+    {
+      "value": "greed_shop",
+      "label": "Greed Shop"
+    },
+    {
+      "value": "boss",
+      "label": "Boss"
+    },
+    {
+      "value": "greed_boss",
+      "label": "Greed Boss Item Room"
+    },
+    {
+      "value": "library",
+      "label": "Library"
+    },
+    {
+      "value": "planetarium",
+      "label": "Planetarium"
+    },
+    {
+      "value": "golden_chest",
+      "label": "Golden Chest"
+    },
+    {
+      "value": "red_chest",
+      "label": "Red Chest"
+    },
+    {
+      "value": "old_chest",
+      "label": "Old Chest"
+    },
+    {
+      "value": "beggar",
+      "label": "Beggar"
+    },
+    {
+      "value": "devil_beggar",
+      "label": "Devil Beggar"
+    },
+    {
+      "value": "key_master",
+      "label": "Key Master"
+    },
+    {
+      "value": "bomb_bum",
+      "label": "Bomb Bum"
+    },
+    {
+      "value": "curse_room",
+      "label": "Curse Room"
+    },
+    {
+      "value": "greed_curse_room",
+      "label": "Greed Curse Room"
+    },
+    {
+      "value": "devil_room",
+      "label": "Devil Room"
+    },
+    {
+      "value": "greed_devil_room",
+      "label": "Greed Devil Room"
+    },
+    {
+      "value": "angel_room",
+      "label": "Angel Room"
+    },
+    {
+      "value": "greed_angel_room",
+      "label": "Greed Angel Room"
+    },
+    {
+      "value": "secret_room",
+      "label": "Secret Room"
+    },
+    {
+      "value": "greed_secret_room",
+      "label": "Greed Secret Room"
+    },
+    {
+      "value": "ultra_secret_room",
+      "label": "Ultra Secret Room"
+    },
+    {
+      "value": "wooden_chest",
+      "label": "Wooden Chest"
+    },
+    {
+      "value": "baby_shop",
+      "label": "Baby Shop"
+    },
+    {
+      "value": "moms_chest",
+      "label": "Mom's Chest"
+    },
+    {
+      "value": "battery_bum",
+      "label": "Battery Bum"
+    },
+    {
+      "value": "rotten_beggar",
+      "label": "Rotten Beggar"
+    },
+    {
+      "value": "crane_game",
+      "label": "Crane Game"
+    },
+    {
+      "value": "none",
+      "label": "Без пула"
+    }
+  ],
+  "tags": [
+    {
+      "value": "sacred_orb",
+      "label": "Sacred Orb"
+    },
+    {
+      "value": "planetarium",
+      "label": "Открытие Planetarium"
+    },
+    {
+      "value": "dead_sea_scrolls",
+      "label": "Эффекты Dead Sea Scrolls"
+    },
+    {
+      "value": "expansion_pack",
+      "label": "Эффекты Expansion Pack"
+    },
+    {
+      "value": "lemegeton_and_modelingclay",
+      "label": "Lemegeton"
+    },
+    {
+      "value": "monster_manual",
+      "label": "Monster Manual"
+    },
+    {
+      "value": "lost_birthright",
+      "label": "The Lost's Birthright"
+    },
+    {
+      "value": "tainted_lost",
+      "label": "Tainted Lost"
+    },
+    {
+      "value": "boss_drop",
+      "label": "Выпадает с боссов"
+    },
+    {
+      "value": "moms_box",
+      "label": "Mom's Box"
+    },
+    {
+      "value": "repentance_plus_changed",
+      "label": "Изменено в Repentance+"
+    },
+    {
+      "value": "judas_birthright",
+      "label": "Judas's Birthright"
+    }
+  ],
+  "controls": [
+    {
+      "name": "group",
+      "value": "category",
+      "id": "group_1",
+      "label": "категории"
+    },
+    {
+      "name": "group",
+      "value": "collection",
+      "id": "group_0",
+      "label": "коллекции"
+    },
+    {
+      "name": "group",
+      "value": "pool",
+      "id": "group_2",
+      "label": "пулу"
+    },
+    {
+      "name": "group",
+      "value": "transformation",
+      "id": "group_3",
+      "label": "превращению"
+    },
+    {
+      "name": "group",
+      "value": "unlock",
+      "id": "group_4",
+      "label": "достижению"
+    },
+    {
+      "name": "sort",
+      "value": "item_id",
+      "id": "sort_0",
+      "label": "Id"
+    },
+    {
+      "name": "sort",
+      "value": "item_name",
+      "id": "sort_1",
+      "label": "Англ. названию"
+    },
+    {
+      "name": "sort",
+      "value": "item_quality",
+      "id": "sort_3",
+      "label": "Качеству"
+    },
+    {
+      "name": "hide",
+      "value": "fade",
+      "id": "hide_0",
+      "label": "Тускнеющий"
+    },
+    {
+      "name": "hide",
+      "value": "remove",
+      "id": "hide_1",
+      "label": "Скрывающий"
+    },
+    {
+      "name": "item-lang",
+      "value": "original",
+      "id": "item-lang_0",
+      "label": "Оригинал"
+    },
+    {
+      "name": "item-lang",
+      "value": "translated",
+      "id": "item-lang_1",
+      "label": "Перевод"
+    },
+    {
+      "name": "quality",
+      "value": "0",
+      "id": "quality_0",
+      "label": "0"
+    },
+    {
+      "name": "quality",
+      "value": "1",
+      "id": "quality_1",
+      "label": "1"
+    },
+    {
+      "name": "quality",
+      "value": "2",
+      "id": "quality_2",
+      "label": "2"
+    },
+    {
+      "name": "quality",
+      "value": "3",
+      "id": "quality_3",
+      "label": "3"
+    },
+    {
+      "name": "quality",
+      "value": "4",
+      "id": "quality_4",
+      "label": "4"
+    },
+    {
+      "name": "spacing",
+      "value": "on",
+      "id": "spacing",
+      "label": "Иконки по сетке"
+    },
+    {
+      "name": "",
+      "value": "on",
+      "id": "greed_switch",
+      "label": "Greed mode"
+    },
+    {
+      "name": "pool",
+      "value": "treasure_room",
+      "id": "pool_treasure_room",
+      "label": "Treasure Room"
+    },
+    {
+      "name": "pool",
+      "value": "greed_treasure_room",
+      "id": "pool_greed_treasure_room",
+      "label": "Greed Treasure Room"
+    },
+    {
+      "name": "pool",
+      "value": "shop",
+      "id": "pool_shop",
+      "label": "Shop"
+    },
+    {
+      "name": "pool",
+      "value": "greed_shop",
+      "id": "pool_greed_shop",
+      "label": "Greed Shop"
+    },
+    {
+      "name": "pool",
+      "value": "boss",
+      "id": "pool_boss",
+      "label": "Boss"
+    },
+    {
+      "name": "pool",
+      "value": "greed_boss",
+      "id": "pool_greed_boss",
+      "label": "Greed Boss Item Room"
+    },
+    {
+      "name": "pool",
+      "value": "library",
+      "id": "pool_library",
+      "label": "Library"
+    },
+    {
+      "name": "pool",
+      "value": "planetarium",
+      "id": "pool_planetarium",
+      "label": "Planetarium"
+    },
+    {
+      "name": "pool",
+      "value": "golden_chest",
+      "id": "pool_golden_chest",
+      "label": "Golden Chest"
+    },
+    {
+      "name": "pool",
+      "value": "red_chest",
+      "id": "pool_red_chest",
+      "label": "Red Chest"
+    },
+    {
+      "name": "pool",
+      "value": "old_chest",
+      "id": "pool_old_chest",
+      "label": "Old Chest"
+    },
+    {
+      "name": "pool",
+      "value": "beggar",
+      "id": "pool_beggar",
+      "label": "Beggar"
+    },
+    {
+      "name": "pool",
+      "value": "devil_beggar",
+      "id": "pool_devil_beggar",
+      "label": "Devil Beggar"
+    },
+    {
+      "name": "pool",
+      "value": "key_master",
+      "id": "pool_key_master",
+      "label": "Key Master"
+    },
+    {
+      "name": "pool",
+      "value": "bomb_bum",
+      "id": "pool_bomb_bum",
+      "label": "Bomb Bum"
+    },
+    {
+      "name": "pool",
+      "value": "curse_room",
+      "id": "pool_curse_room",
+      "label": "Curse Room"
+    },
+    {
+      "name": "pool",
+      "value": "greed_curse_room",
+      "id": "pool_greed_curse_room",
+      "label": "Greed Curse Room"
+    },
+    {
+      "name": "pool",
+      "value": "devil_room",
+      "id": "pool_devil_room",
+      "label": "Devil Room"
+    },
+    {
+      "name": "pool",
+      "value": "greed_devil_room",
+      "id": "pool_greed_devil_room",
+      "label": "Greed Devil Room"
+    },
+    {
+      "name": "pool",
+      "value": "angel_room",
+      "id": "pool_angel_room",
+      "label": "Angel Room"
+    },
+    {
+      "name": "pool",
+      "value": "greed_angel_room",
+      "id": "pool_greed_angel_room",
+      "label": "Greed Angel Room"
+    },
+    {
+      "name": "pool",
+      "value": "secret_room",
+      "id": "pool_secret_room",
+      "label": "Secret Room"
+    },
+    {
+      "name": "pool",
+      "value": "greed_secret_room",
+      "id": "pool_greed_secret_room",
+      "label": "Greed Secret Room"
+    },
+    {
+      "name": "pool",
+      "value": "ultra_secret_room",
+      "id": "pool_ultra_secret_room",
+      "label": "Ultra Secret Room"
+    },
+    {
+      "name": "pool",
+      "value": "wooden_chest",
+      "id": "pool_wooden_chest",
+      "label": "Wooden Chest"
+    },
+    {
+      "name": "pool",
+      "value": "baby_shop",
+      "id": "pool_baby_shop",
+      "label": "Baby Shop"
+    },
+    {
+      "name": "pool",
+      "value": "moms_chest",
+      "id": "pool_moms_chest",
+      "label": "Mom's Chest"
+    },
+    {
+      "name": "pool",
+      "value": "battery_bum",
+      "id": "pool_battery_bum",
+      "label": "Battery Bum"
+    },
+    {
+      "name": "pool",
+      "value": "rotten_beggar",
+      "id": "pool_rotten_beggar",
+      "label": "Rotten Beggar"
+    },
+    {
+      "name": "pool",
+      "value": "crane_game",
+      "id": "pool_crane_game",
+      "label": "Crane Game"
+    },
+    {
+      "name": "pool",
+      "value": "none",
+      "id": "pool_none",
+      "label": "Без пула"
+    },
+    {
+      "name": "tag",
+      "value": "sacred_orb",
+      "id": "tag_sacred_orb",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "planetarium",
+      "id": "tag_planetarium",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "dead_sea_scrolls",
+      "id": "tag_dead_sea_scrolls",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "expansion_pack",
+      "id": "tag_expansion_pack",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "lemegeton_and_modelingclay",
+      "id": "tag_lemegeton",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "monster_manual",
+      "id": "tag_monster_manual",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "lost_birthright",
+      "id": "tag_lost_birthright",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "tainted_lost",
+      "id": "tag_tainted_lost",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "boss_drop",
+      "id": "tag_boss_drop",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "moms_box",
+      "id": "tag_moms_box",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "repentance_plus_changed",
+      "id": "tag_repentance_plus_changed",
+      "label": ""
+    },
+    {
+      "name": "tag",
+      "value": "judas_birthright",
+      "id": "tag_judas_birthright",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#24313b",
+      "id": "color_1",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#28282a",
+      "id": "color_2",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#3a4a68",
+      "id": "color_3",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#23222a",
+      "id": "color_4",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#4b1616",
+      "id": "color_5",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#2c211b",
+      "id": "color_6",
+      "label": ""
+    },
+    {
+      "name": "color",
+      "value": "#432d28",
+      "id": "color_7",
+      "label": ""
+    }
+  ]
+}

@@ -231,3 +231,116 @@ test('mobile layout fits the viewport across navigation and dialogs', async ({ p
   await expect(page.locator('.item-card[aria-pressed="true"]')).toHaveCount(1);
   await expectNoHorizontalOverflow(page);
 });
+
+test('item information is separate from elimination and nested dialogs close independently', async ({ page }) => {
+  await openBoard(page);
+  const name = await page.locator('.item-card .item-name').first().innerText();
+  await page.getByRole('button', { name: `Описание ${name}`, exact: true }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByText(name, { exact: true }).last()).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('.item-card[aria-pressed="true"]')).toHaveCount(0);
+  await page.getByRole('button', { name: /^Набор предметов/ }).click();
+  const catalogue = page.getByRole('dialog', { name: 'Соберите свой набор' });
+  await catalogue.getByRole('button', { name: 'Описание The Sad Onion', exact: true }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(2);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(1);
+  await expect(catalogue).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('grid presets, presentation preferences and exact field codes work', async ({ page }) => {
+  await openBoard(page);
+  await page.getByRole('button', { name: /^Набор предметов/ }).click();
+  const builder = page.getByRole('dialog', { name: 'Соберите свой набор' });
+  await builder.getByRole('button', { name: /Только легенды/ }).click();
+  await builder.getByRole('spinbutton', { name: 'Размер создаваемого поля' }).fill('10');
+  await builder.getByRole('button', { name: 'Оформление и код поля' }).click();
+  await builder.getByRole('combobox', { name: 'Язык названий' }).selectOption('ru');
+  await builder.getByRole('combobox', { name: 'Сортировка поля' }).selectOption('id');
+  await builder.getByRole('combobox', { name: 'Группировать по' }).selectOption('quality');
+  await builder.getByRole('combobox', { name: 'Стиль исключения' }).selectOption('dim');
+  await builder.getByRole('button', { name: 'Тема: Планетарий', exact: true }).click();
+  await builder.getByRole('button', { name: 'Создать поле', exact: true }).click();
+  await expect(page.locator('.item-card')).toHaveCount(10);
+  await expect(page.locator('.board-panel')).toHaveAttribute('data-theme', 'purple');
+  await expect(page.locator('.board-group-heading')).toHaveText('Качество 410');
+  await expect(page.locator('.item-card .quality-4')).toHaveCount(10);
+  await page.locator('.item-card').first().click();
+  await expect(page.locator('.item-card.is-dimmed')).toHaveCount(1);
+  await page.reload();
+  await expect(page.locator('.item-card.is-dimmed')).toHaveCount(1);
+  await expect(page.locator('.board-panel')).toHaveAttribute('data-theme', 'purple');
+  await page.getByRole('button', { name: /^Набор предметов/ }).click();
+  await builder.getByRole('button', { name: 'Оформление и код поля' }).click();
+  await builder.getByRole('textbox', { name: 'Код поля' }).fill('IGC1:3.1.2');
+  await builder.getByRole('button', { name: 'Открыть поле', exact: true }).click();
+  await expect(page.locator('.item-card')).toHaveCount(3);
+  // ID sorting is applied to the displayed field; the imported underlying order is retained.
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).boardIds)).toEqual([3, 1, 2]);
+  await expect(page.locator('.item-card[aria-pressed="true"]')).toHaveCount(0);
+});
+
+test('source descriptions retain unlocks and open references across categories', async ({ page }) => {
+  await openBoard(page);
+  await page.getByRole('button', { name: 'Справочник', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Godhead');
+  await page.getByRole('button', { name: 'Справочник: Godhead', exact: true }).click();
+  const details = page.getByRole('dialog', { name: 'Божественность' });
+  await expect(details.getByText('Как открыть', { exact: true })).toBeVisible();
+  await expect(details).toContainText('Потерянного');
+  await expect(details).toContainText('Angel Room');
+  await expect(details.locator('.item-detail-metadata')).toContainText('156');
+  await details.getByRole('link', { name: 'Трисвятое', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Трисвятое' })).toContainText('Trisagion');
+  await page.keyboard.press('Escape');
+  await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Bad Gas');
+  await page.getByRole('button', { name: 'Справочник: Bad Gas', exact: true }).click();
+  const pill = page.getByRole('dialog', { name: 'Вонючий Газ' });
+  await expect(pill).toContainText('Отравляет');
+  await expect(pill.locator('.item-detail-badges')).toContainText('#0');
+  await expect(pill.locator('.detail-quality')).toHaveCount(0);
+  await pill.getByRole('link', { name: 'Плацебо', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Плацебо' })).toContainText('Placebo');
+});
+
+test('quality, source pools, tags and Greed mode determine the created set', async ({ page }) => {
+  await openBoard(page);
+  await page.getByRole('button', { name: /^Набор предметов/ }).click();
+  const builder = page.getByRole('dialog', { name: 'Соберите свой набор' });
+  for (const quality of [0, 1, 2, 3]) {
+    await builder.getByRole('button', { name: `Качество ${quality}`, exact: true }).click();
+  }
+  await builder.getByRole('checkbox', { name: 'Greed mode', exact: true }).check();
+  await builder.getByRole('combobox', { name: 'Пул предметов' }).selectOption('Greed Angel Room');
+  await builder.getByRole('combobox', { name: 'Теги предметов' }).selectOption('Rebirth');
+  await expect(builder.locator('.catalogue-item')).toHaveCount(4);
+  await builder.getByRole('button', { name: 'Весь выбранный набор', exact: true }).click();
+  await builder.getByRole('button', { name: 'Создать поле', exact: true }).click();
+  await expect(page.locator('.item-card')).toHaveCount(4);
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).poolIds)).toEqual([108, 182, 313, 331]);
+  await page.reload();
+  await expect(page.locator('.item-card')).toHaveCount(4);
+  await page.getByRole('button', { name: 'Новое поле', exact: true }).click();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).boardIds.sort((a: number, b: number) => a - b))).toEqual([108, 182, 313, 331]);
+});
+
+test('the complete set and mobile reference fit and load locally', async ({ page }) => {
+  await openBoard(page);
+  await page.getByRole('button', { name: /^Набор предметов/ }).click();
+  const builder = page.getByRole('dialog', { name: 'Соберите свой набор' });
+  await builder.getByRole('button', { name: 'Весь выбранный набор', exact: true }).click();
+  await builder.getByRole('button', { name: 'Создать поле', exact: true }).click();
+  await expect(page.locator('.item-card')).toHaveCount(718);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('button', { name: 'Справочник', exact: true }).click();
+  await expectNoHorizontalOverflow(page);
+  await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Swallowed Penny');
+  await page.getByRole('button', { name: 'Справочник: Swallowed Penny', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Проглоченный Пенни' })).toContainText('При получении урона');
+  await expectNoHorizontalOverflow(page);
+  await expect.poll(async () => page.locator('.item-details-icon img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+});

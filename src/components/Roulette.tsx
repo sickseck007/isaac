@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, Check, ChevronRight, Dices, Eye, EyeOff, HelpCircle, LockKeyhole, RotateCw, Sparkles } from 'lucide-react';
+import { ArrowDown, Check, ChevronRight, Dices, Eye, EyeOff, HelpCircle, Info, LockKeyhole, RotateCw, Sparkles } from 'lucide-react';
 import type { Item, Player } from '../types';
 import './Roulette.css';
 
@@ -9,6 +9,7 @@ type Props = {
   player: Player;
   onPick: (id: number) => void;
   onToggleSecret: () => void;
+  onDetails: (item: Item) => void;
 };
 
 type Spin = { playerId: string; cards: Item[]; winner: Item };
@@ -27,7 +28,7 @@ function imagePath(item: Item) {
   return `${import.meta.env.BASE_URL}${item.icon}`;
 }
 
-export default function Roulette({ items, boardItems, player, onPick, onToggleSecret }: Props) {
+export default function Roulette({ items, boardItems, player, onPick, onToggleSecret, onDetails }: Props) {
   const [poolType, setPoolType] = useState<'all' | 'board'>('all');
   const [spin, setSpin] = useState<Spin | null>(null);
   const [spinning, setSpinning] = useState(false);
@@ -159,7 +160,7 @@ export default function Roulette({ items, boardItems, player, onPick, onToggleSe
 
       <div className="roulette-bottom">
         <div className="roulette-result">
-          <div className="roulette-result-heading"><span className="eyebrow">ТВОЙ ПРЕДМЕТ</span><span>{player.name}</span></div>
+          <div className="roulette-result-heading"><span className="eyebrow">ТВОЙ ПРЕДМЕТ</span>{secret && !concealed && !spinning ? <button type="button" className="roulette-detail-button" onClick={() => onDetails(secret)} aria-label={`Описание ${secret.name}`}><Info size={12} /> О предмете</button> : <span>{player.name}</span>}</div>
           {secret && !spinning ? <button type="button" className={`roulette-result-card${concealed ? ' is-hidden' : ''}`} onClick={onToggleSecret} aria-label={concealed ? 'Показать выбранный предмет' : `Скрыть выбранный предмет: ${secret.name}`}>
             <span className="roulette-result-icon">{concealed ? <HelpCircle size={34} strokeWidth={1.6} /> : <img src={imagePath(secret)} alt="" />}</span>
             <span className="roulette-result-copy"><strong>{concealed ? 'Это наш маленький секрет' : secret.name}</strong><span>{concealed ? 'Нажми, чтобы посмотреть' : 'Запомни и нажми, чтобы скрыть'}</span></span>
