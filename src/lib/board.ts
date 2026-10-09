@@ -1,6 +1,7 @@
 import type { BoardPreferences, Item } from '../types';
 
 export const DEFAULT_PREFERENCES: BoardPreferences = {
+  boardView: 'all',
   sort: 'random', groupBy: 'none', nameLanguage: 'en', excludedStyle: 'flip',
   theme: 'basement', showQuality: true, showIds: false, iconGrid: true, sampling: 'random',
 };
@@ -22,6 +23,7 @@ function choice<T extends string>(value: unknown, choices: readonly T[], fallbac
 export function normalizePreferences(value: unknown): BoardPreferences {
   const p = typeof value === 'object' && value !== null ? value as Record<string, unknown> : {};
   return {
+    boardView: choice(p.boardView, ['all', 'single'], 'all'),
     sort: choice(p.sort, ['random', 'id', 'name', 'quality'], 'random'),
     groupBy: choice(p.groupBy, ['none', 'type', 'quality', 'pool', 'collection', 'transformation', 'achievement'], 'none'),
     nameLanguage: choice(p.nameLanguage, ['en', 'ru'], 'en'),

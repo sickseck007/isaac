@@ -24,11 +24,80 @@ const test = base.extend<{ browserHealth: void }>({
 
 async function openBoard(page: Page) {
   await page.goto('/');
+  await page.getByRole('button', { name: 'По одному', exact: true }).click();
   await expect(page.locator('.item-card')).toHaveCount(30);
   await expect.poll(async () => page.locator('.item-card img').evaluateAll(images =>
     images.every(image => image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0),
   ), { message: 'All board item icons should load successfully' }).toBe(true);
 }
+
+test('all player fields share one screen while flips, reset and remaining filters stay independent', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('button', { name: 'Все поля', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.boards-overview .board-panel')).toHaveCount(3);
+  const first = page.getByRole('region', { name: 'Игровое поле Игрок 1', exact: true });
+  const second = page.getByRole('region', { name: 'Игровое поле Игрок 2', exact: true });
+  const third = page.getByRole('region', { name: 'Игровое поле Игрок 3', exact: true });
+  for (const field of [first, second, third]) await expect(field.locator('.item-card')).toHaveCount(30);
+  const bounds = await Promise.all([first, second, third].map(field => field.boundingBox()));
+  expect(bounds.every(rect => rect !== null && Math.abs(rect.y - bounds[0]!.y) < 1)).toBe(true);
+  expect(bounds[0]!.x).toBeLessThan(bounds[1]!.x);
+  expect(bounds[1]!.x).toBeLessThan(bounds[2]!.x);
+  expect(bounds.every(rect => rect!.y + rect!.height <= page.viewportSize()!.height)).toBe(true);
+  const id = await first.locator('.item-card').first().getAttribute('data-item-id');
+  const card = `[data-item-id="${id}"]`;
+  await first.locator(card).click();
+  await expect(first.locator(card)).toHaveAttribute('aria-pressed', 'true');
+  await expect(second.locator(card)).toHaveAttribute('aria-pressed', 'false');
+  await expect(third.locator(card)).toHaveAttribute('aria-pressed', 'false');
+  await second.locator(card).click();
+  await second.getByRole('button', { name: 'Сбросить', exact: true }).click();
+  await expect(first.locator(card)).toHaveAttribute('aria-pressed', 'true');
+  await expect(second.locator(card)).toHaveAttribute('aria-pressed', 'false');
+  await first.getByRole('button', { name: 'Только оставшиеся', exact: true }).click();
+  await expect(first.locator('.item-card')).toHaveCount(29);
+  await expect(second.locator('.item-card')).toHaveCount(30);
+  await expect(third.locator('.item-card')).toHaveCount(30);
+  await page.reload();
+  await expect(page.locator('.boards-overview .board-panel')).toHaveCount(3);
+  await expect(first.locator(card)).toHaveAttribute('aria-pressed', 'true');
+  await expect(second.locator(card)).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: 'По одному', exact: true }).click();
+  await expect(page.locator('.board-panel')).toHaveCount(1);
+  await expect(first.locator(card)).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Поле: Игрок 2', exact: true }).click();
+  await expect(second.locator(card)).toHaveAttribute('aria-pressed', 'false');
+  await page.getByRole('button', { name: 'Все поля', exact: true }).click();
+  await expect(first.locator(card)).toHaveAttribute('aria-pressed', 'true');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expectNoHorizontalOverflow(page);
+  await expect(page.locator('.boards-overview .board-panel')).toHaveCount(3);
+});
+
+test('the overview tracks configured players and opens the correct player’s hidden secret', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Настроить игроков', exact: true }).click();
+  const settings = page.getByRole('dialog', { name: 'Ваша игра, ваши правила' });
+  await settings.getByRole('textbox', { name: 'Имя игрока 2' }).fill('Миша');
+  await settings.getByRole('button', { name: 'Добавить игрока', exact: true }).click();
+  await settings.getByRole('textbox', { name: 'Имя игрока 4' }).fill('Лена');
+  await settings.getByRole('spinbutton', { name: 'Предметов на поле', exact: true }).fill('12');
+  await settings.getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await expect(page.locator('.boards-overview .board-panel')).toHaveCount(4);
+  await expect(page.locator('.item-card')).toHaveCount(48);
+  await page.getByRole('button', { name: 'Выбрать секрет для Миша', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Поле: Миша', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Крутить рулетку', exact: true }).click();
+  await page.getByRole('button', { name: /^Скрыть выбранный предмет:/ }).click();
+  await page.getByRole('button', { name: 'Игровое поле', exact: true }).click();
+  await expect(page.locator('.boards-overview .board-panel')).toHaveCount(4);
+  await expect(page.getByRole('region', { name: 'Игровое поле Миша', exact: true })).toContainText('Секрет выбран');
+  await page.getByRole('button', { name: 'Выбрать секрет для Лена', exact: true }).click();
+  await expect(page.getByText('Здесь будет твой предмет', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Игровое поле', exact: true }).click();
+  await page.getByRole('button', { name: 'Выбрать секрет для Миша', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Показать выбранный предмет', exact: true })).toBeVisible();
+});
 
 async function expectNoHorizontalOverflow(page: Page) {
   const overflow = await page.evaluate(() => ({

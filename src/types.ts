@@ -28,6 +28,7 @@ export type ReferenceEntry = {
 };
 
 export type BoardPreferences = {
+  boardView: 'all' | 'single';
   sort: 'random' | 'id' | 'name' | 'quality';
   groupBy: 'none' | 'type' | 'quality' | 'pool' | 'collection' | 'transformation' | 'achievement';
   nameLanguage: 'en' | 'ru';

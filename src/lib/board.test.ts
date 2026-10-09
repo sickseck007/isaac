@@ -14,8 +14,18 @@ describe('portable fields', () => {
 
   it('preserves old saves by supplying missing display preferences', () => {
     const game = createGame(items);
+    game.players[0].eliminated = [game.boardIds[0]];
+    game.players[1].secretItemId = items[0].id;
+    game.players[1].secretRevealed = false;
     const { preferences: _preferences, ...legacy } = game;
     expect(normalizeGame(legacy, items)?.preferences).toEqual(DEFAULT_PREFERENCES);
+    const { boardView: _boardView, ...oldPreferences } = game.preferences;
+    const restored = normalizeGame({ ...game, preferences: oldPreferences }, items)!;
+    expect(restored.preferences.boardView).toBe('all');
+    expect(restored.boardIds).toEqual(game.boardIds);
+    expect(restored.players).toEqual(game.players);
+    expect(normalizePreferences({ boardView: 'single' }).boardView).toBe('single');
+    expect(normalizePreferences({ boardView: 'invalid' }).boardView).toBe('all');
     expect(normalizePreferences({ theme: 'url(unsafe)', sort: 'unknown', excludedStyle: 'hide', showIds: true })).toEqual({ ...DEFAULT_PREFERENCES, excludedStyle: 'hide', showIds: true });
   });
 });
