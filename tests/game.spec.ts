@@ -358,22 +358,22 @@ test('source descriptions retain unlocks and open references across categories',
   await page.getByRole('button', { name: 'Справочник', exact: true }).click();
   await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Godhead');
   await page.getByRole('button', { name: 'Справочник: Godhead', exact: true }).click();
-  const details = page.getByRole('dialog', { name: 'Божественность' });
+  const details = page.getByRole('dialog', { name: 'Godhead' });
   await expect(details.getByText('Как открыть', { exact: true })).toBeVisible();
   await expect(details).toContainText('Потерянного');
   await expect(details).toContainText('Angel Room');
   await expect(details.locator('.item-detail-metadata')).toContainText('156');
-  await details.getByRole('link', { name: 'Трисвятое', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Трисвятое' })).toContainText('Trisagion');
+  await details.getByRole('link', { name: 'Trisagion', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Trisagion' })).toContainText('Trisagion');
   await page.keyboard.press('Escape');
   await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Bad Gas');
   await page.getByRole('button', { name: 'Справочник: Bad Gas', exact: true }).click();
-  const pill = page.getByRole('dialog', { name: 'Вонючий Газ' });
+  const pill = page.getByRole('dialog', { name: 'Bad Gas' });
   await expect(pill).toContainText('Отравляет');
   await expect(pill.locator('.item-detail-badges')).toContainText('#0');
   await expect(pill.locator('.detail-quality')).toHaveCount(0);
-  await pill.getByRole('link', { name: 'Плацебо', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Плацебо' })).toContainText('Placebo');
+  await pill.getByRole('link', { name: 'Placebo', exact: true }).click();
+  await expect(page.getByRole('dialog', { name: 'Placebo' })).toContainText('Placebo');
 });
 
 test('initial availability and description zoom work on desktop and mobile', async ({ page }) => {
@@ -474,7 +474,7 @@ test('the complete set and mobile reference fit and load locally', async ({ page
   await expectNoHorizontalOverflow(page);
   await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Swallowed Penny');
   await page.getByRole('button', { name: 'Справочник: Swallowed Penny', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Проглоченный Пенни' })).toContainText('При получении урона');
+  await expect(page.getByRole('dialog', { name: 'Swallowed Penny' })).toContainText('При получении урона');
   await expectNoHorizontalOverflow(page);
   await expect.poll(async () => page.locator('.item-details-icon img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
 });

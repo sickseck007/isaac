@@ -59,7 +59,7 @@ test('classic compares stats, Lost rules and quality, persists progress, and awa
   await expect(page.locator('.dle-winning-row [data-match="exact"]')).toHaveCount(8);
   await expect(page.getByRole('combobox', { name: 'Ваш ответ — предмет' })).toHaveCount(0);
   await page.locator('.dle-result').getByRole('button', { name: 'Описание', exact: true }).click();
-  await expect(page.getByRole('dialog', { name: 'Священное Сердце' })).toBeVisible();
+  await expect(page.getByRole('dialog', { name: 'Sacred Heart' })).toBeVisible();
   await page.keyboard.press('Escape');
   await page.reload();
   await expect(page.locator('.dle-result')).toContainText('Sacred Heart');
@@ -128,7 +128,7 @@ test('icon grayscale and rotation can be disabled, persist, and ease after error
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:dle:v1')!).stats.icon)).toEqual({ solved: 0, skipped: 1, points: 0 });
 });
 
-test('all modes fit mobile and tablet, comparison scrolls locally, and friend fields remain intact', async ({ page }) => {
+test('all modes fit mobile and tablet, comparison reflows on phones, and friend fields remain intact', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await openDle(page);
   const board = await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!));
@@ -138,7 +138,7 @@ test('all modes fit mobile and tablet, comparison scrolls locally, and friend fi
     await expect(page.getByRole('combobox', { name: 'Ваш ответ — предмет' })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   }
-  expect(await page.locator('.dle-table-scroll').evaluate(el => el.scrollWidth > el.clientWidth)).toBe(true);
+  expect(await page.locator('.dle-table-scroll').evaluate(el => el.scrollWidth > el.clientWidth)).toBe(false);
   await page.getByRole('button', { name: 'Следующий предмет', exact: true }).click();
   await page.setViewportSize({ width: 640, height: 900 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(640);

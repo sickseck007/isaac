@@ -3,6 +3,7 @@ import { Check, Copy, Dices, Grid2X2, Info, Search, Sparkles, X } from 'lucide-r
 import type { GameState, Item } from '../types';
 import { decodeBoard, encodeBoard, itemLabel, sortBoard } from '../lib/board';
 import { newBoard } from '../lib/game';
+import { matchesItemSearch } from '../lib/search';
 import Modal from './Modal';
 import AppearanceSettings from './AppearanceSettings';
 import './BoardBuilder.css';
@@ -30,8 +31,7 @@ export default function BoardBuilder({ game, items, onApply, onClose, onDetails 
     && (!greed || Boolean(item.greedPools?.length))
     && (pool === 'all' || ((greed ? item.greedPools : item.pools) ?? []).includes(pool))
     && (tag === 'all' || item.tags?.includes(tag))), [items, qualities, type, pool, greed, tag]);
-  const visible = useMemo(() => sortBoard(eligible.filter(item =>
-    `${item.name} ${item.nameRu ?? ''} ${item.id} ${item.keywords ?? ''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())), preferences), [eligible, query, preferences]);
+  const visible = useMemo(() => sortBoard(eligible.filter(item => matchesItemSearch(item, query)), preferences), [eligible, query, preferences]);
   const effectiveIds = eligible.filter(item => selected.has(item.id)).map(item => item.id);
   const effectiveCount = effectiveIds.length;
 

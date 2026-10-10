@@ -1,5 +1,6 @@
 import type { Item } from '../types';
 import { randomIndex } from './game';
+import { exactSearch, matchesItemSearch } from './search';
 
 export const DLE_STORAGE_KEY = 'isaac-guess-club:dle:v1';
 export const DLE_MODES = ['classic', 'effects', 'icon', 'emoji'] as const;
@@ -141,10 +142,8 @@ export function compareItems(guess: Item, target: Item, clues: ClueMap, lostRule
 }
 
 export function searchDleItems(items: Item[], query: string, guesses: number[]): Item[] {
-  const normalize = (text: string) => text.toLocaleLowerCase().normalize('NFKC').replaceAll('ё', 'е').trim();
-  const needle = normalize(query);
-  if (!needle) return [];
-  const remaining = items.filter(item => !guesses.includes(item.id));
-  const matches = remaining.filter(item => normalize(`${item.name} ${item.nameRu ?? ''} ${item.id}`).includes(needle));
-  return matches.sort((a, b) => Number(normalize(b.name) === needle || normalize(b.nameRu ?? '') === needle || String(b.id) === needle) - Number(normalize(a.name) === needle || normalize(a.nameRu ?? '') === needle || String(a.id) === needle)).slice(0, 8);
+  if (!query.trim()) return [];
+  const exact = (item: Item) => exactSearch(item.name, query) || exactSearch(item.nameRu ?? '', query) || String(item.id) === query.trim();
+  return items.filter(item => !guesses.includes(item.id) && matchesItemSearch(item, query))
+    .sort((a, b) => Number(exact(b)) - Number(exact(a))).slice(0, 8);
 }

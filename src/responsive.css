@@ -1,0 +1,213 @@
+/* Phone layouts keep the desktop board compactness and table intact. */
+@media (max-width: 900px) and (pointer: coarse) {
+  .page-shell input:not([type=checkbox]), .page-shell select,
+  .modal input:not([type=checkbox]), .modal select,
+  .page-shell .dle-page .dle-lost-rule select,
+  .page-shell .dle-page .dle-search-input input { font-size: 16px; min-height: 44px; }
+  .page-shell .button, .modal .button { min-height: 44px; }
+}
+
+@media (max-width: 700px) {
+  .page-shell { padding-inline: max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-right)); }
+  .page-shell .main-panel { min-width: 0; }
+  .site-header:has(.dle-nav-button) { height: auto; }
+  .site-header .header-inner { padding-block: 10px; gap: 8px; }
+  .site-header .main-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-header .main-nav button { min-height: 44px; font-size: 12px; padding: 8px; }
+  .site-header .help-button { min-height: 44px; padding: 0 4px; }
+  .site-header .help-button span { display: block; font-size: 12px; }
+  .page-shell input:not([type=checkbox]), .page-shell select,
+  .modal input:not([type=checkbox]), .modal select { font-size: 16px; min-height: 44px; }
+  .page-shell .button, .modal .button { min-height: 44px; font-size: 12px; white-space: normal; }
+  .page-shell .icon-button, .modal .icon-button { min-width: 44px; width: 44px; height: 44px; flex-shrink: 0; }
+  .page-shell .text-button, .modal .text-button { min-height: 44px; font-size: 12px; line-height: 1.5; }
+  .page-shell .search-field, .modal .search-field { height: 48px; }
+  .search-field > svg, .button > svg { flex-shrink: 0; }
+  .page-shell .search-field button, .modal .search-field button { min-width: 32px; min-height: 44px; justify-content: center; }
+  .page-shell .hero { min-height: 0; padding-block: 24px; }
+  .page-shell .hero-art { display: none; }
+  .page-shell .hero p { font-size: 12px; max-width: none; }
+  .page-shell .site-footer { font-size: 10px; line-height: 1.7; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  .page-shell .site-footer > span { flex-wrap: wrap; }
+  .page-shell .player-info strong { font-size: 13px; }
+  .page-shell .player-info > span { font-size: 10px; }
+  .page-shell .players-panel { grid-template-columns: minmax(0, 1fr) 44px; }
+  .page-shell .manage-players { width: 44px; height: 44px; }
+  .page-shell .player-button { flex-shrink: 0; }
+
+  .page-shell .board-view-bar { gap: 8px; }
+  .page-shell .board-view-switch button { min-height: 44px; font-size: 12px; padding: 8px 10px; }
+  .page-shell .board-view-bar > .text-button { margin-left: 0; }
+  .page-shell .board-view-caption { font-size: 12px; }
+  .page-shell .overview-actions { justify-content: space-between; }
+  .page-shell .board-controls { gap: 8px; }
+  .page-shell .board-controls .search-field { height: 48px; }
+  .page-shell .pool-button { min-height: 44px; padding: 10px; font-size: 0; }
+  .page-shell .pool-button svg { height: 20px; width: 20px; }
+  .page-shell .pool-button > span { font-size: 11px; }
+  .page-shell .board-status { flex-wrap: wrap; margin-block: 14px; gap: 8px; font-size: 12px; }
+  .page-shell .board-status > div { font-size: 12px; }
+  .page-shell .board-panel .board-status > div { font-size: 12px; }
+  .page-shell .remaining-count { font-size: 15px; }
+  .page-shell .remaining-toggle { min-height: 44px; font-size: 12px; padding: 6px 0; }
+  .page-shell .board-panel .remaining-toggle { min-height: 44px; font-size: 12px; padding: 6px 0; }
+  .page-shell .board-secret-status { font-size: 12px; line-height: 1.5; flex-wrap: wrap; }
+  .page-shell .board-secret-status > span { font-size: 10px; }
+  .page-shell .board-panel[data-icon-grid=true] .items-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .page-shell .board-panel[data-icon-grid=true] .item-card { aspect-ratio: auto; height: 90px; min-height: 90px; }
+  .page-shell .board-panel[data-icon-grid=true] .item-name { font-size: 12px; line-height: 1.1; min-height: 27px; padding: 2px 3px; }
+  .page-shell .board-panel[data-icon-grid=true] .item-card-front > img { width: 62%; height: 48px; margin-top: 9px; }
+  .page-shell .board-panel .item-info-button { width: 28px; height: 28px; top: 2px; left: 2px; }
+  .page-shell .board-panel .item-info-button svg { width: 17px; height: 17px; }
+  .page-shell .board-panel[data-icon-grid=true] .item-id-label { top: 33px; left: 3px; font-size: 10px; }
+  .page-shell .board-panel .board-footer { font-size: 11px; line-height: 1.6; gap: 8px; flex-wrap: wrap; }
+  .page-shell .board-panel .board-footer > span { font-size: 11px; max-width: 190px; }
+
+  .page-shell .dle-page { padding-top: 20px; }
+  .dle-page .dle-heading { margin-bottom: 18px; }
+  .dle-page .dle-heading h1 { font-size: 28px; }
+  .dle-page .dle-heading p { font-size: 12px; margin-top: 8px; max-width: none; }
+  .dle-page .dle-heading-mark { display: none; }
+  .dle-page .dle-modes { gap: 8px; margin-bottom: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dle-page .dle-modes > button { padding: 12px 10px; gap: 9px; min-height: 64px; }
+  .dle-page .dle-modes strong { font-size: 14px; }
+  .dle-page .dle-modes small { font-size: 11px; }
+  .dle-page .dle-toolbar { gap: 8px; margin-bottom: 12px; }
+  .dle-page .dle-toolbar strong { font-size: 14px; }
+  .dle-page .dle-pool-count { font-size: 11px; }
+  .dle-page .dle-toolbar > div { width: 100%; justify-content: space-between; gap: 8px; }
+  .dle-page .dle-lost-rule { display: grid; gap: 7px; font-size: 12px; }
+  .dle-page .dle-lost-rule select { width: 100%; min-width: 0; }
+  .page-shell .dle-page .dle-lost-rule select { font-size: 16px; }
+  .page-shell .dle-page .text-button { min-height: 44px; font-size: 12px; }
+  .page-shell .dle-page .button { min-height: 44px; font-size: 12px; }
+  .dle-page .dle-play-panel { padding: 18px 12px; }
+  .dle-page .dle-mode-intro { font-size: 13px; margin-bottom: 16px; }
+  .dle-page .dle-classic-prompt { gap: 12px; }
+  .dle-page .dle-classic-prompt p { font-size: 12px; }
+  .dle-page .dle-search-input { padding-inline: 10px; gap: 8px; }
+  .dle-page .dle-search-input input { font-size: 16px; }
+  .dle-page .dle-search-input > span { display: none; }
+  .dle-page .dle-search-input button { min-height: 44px; min-width: 32px; }
+  .dle-page .dle-search-results { max-height: min(320px, 45dvh); overflow-y: auto; overscroll-behavior: contain; }
+  .dle-page .dle-search-results button { min-height: 64px; padding: 10px; }
+  .dle-page .dle-search-results strong { font-size: 14px; }
+  .dle-page .dle-search-results small { font-size: 12px; }
+  .dle-page .dle-round-meta { font-size: 12px; gap: 4px 12px; margin-top: 12px; }
+  .dle-page .dle-round-meta .button { width: 100%; }
+  .dle-page .dle-legend { font-size: 12px; gap: 8px 14px; margin-top: 18px; }
+  .dle-page .dle-table-scroll { overflow: visible; border: 0; border-radius: 0; background: none; }
+  .dle-page .dle-table { display: block; min-width: 0; border-spacing: 0; font-size: 13px; }
+  .dle-page .dle-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .dle-page .dle-table tbody { display: grid; gap: 16px; }
+  .dle-page .dle-table tbody tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 10px; background: #201e25; border: 1px solid #ffffff0c; border-radius: 12px; }
+  .dle-page .dle-table tbody th { grid-column: 1 / -1; position: static; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 3px 12px; align-items: center; text-align: left; width: auto; padding: 10px 12px; box-shadow: none; }
+  .dle-page .dle-table tbody th img { grid-row: 1 / 3; width: 40px; height: 40px; margin: 0; }
+  .dle-page .dle-table tbody th strong { font-size: 14px; line-height: 1.4; }
+  .dle-page .dle-table tbody th small { font-size: 12px; margin: 0; }
+  .dle-page .dle-cell { display: flex; flex-direction: column; justify-content: center; padding: 12px 8px; min-height: 104px; font-size: 13px; }
+  .dle-page .dle-cell::before { content: attr(data-label); display: block; font-size: 11px; line-height: 1.4; color: #ffffffb3; margin-bottom: 7px; font-weight: 500; }
+  .dle-page .dle-effect-clue { font-size: 15px; padding: 16px 12px; }
+  .dle-page .dle-icon-options { gap: 8px 16px; }
+  .dle-page .dle-icon-options label { font-size: 13px; min-height: 44px; }
+  .dle-page .dle-clue-caption { font-size: 12px; }
+  .dle-page .dle-emoji-clue > span { font-size: 34px; margin-inline: 3px; }
+  .dle-page .dle-emoji-clue > .dle-emoji-hidden { min-width: 42px; font-size: 28px; }
+  .dle-page .dle-emoji-clue > p { font-size: 12px; }
+  .dle-page .dle-hint-pill { font-size: 12px; }
+  .dle-page .dle-hints small { font-size: 11px; }
+  .dle-page .dle-result > .text-button { flex-basis: 100%; }
+  .dle-page .dle-result span, .dle-page .dle-result p { font-size: 12px; }
+  .dle-page .dle-guess-history > div { font-size: 13px; }
+  .dle-page .dle-scoreboard { padding-inline: 0; gap: 16px; }
+  .dle-page .dle-scoreboard > div > span, .dle-page .dle-score-note { font-size: 11px; }
+  .dle-page .dle-score-note { flex-basis: 100%; margin: 0; text-align: left; }
+
+  .page-shell .reference-heading p { font-size: 13px; }
+  .page-shell:has(.reference-panel) .hero,
+  .page-shell .game-layout:has(.reference-panel) .players-panel { display: none; }
+  .page-shell .reference-heading { margin-top: 24px; }
+  .page-shell .reference-tools { flex-wrap: wrap; gap: 8px; }
+  .page-shell .reference-tools .search-field { flex-basis: 100%; max-width: none; }
+  .page-shell .reference-tools > span { font-size: 12px; }
+  .page-shell .reference-categories button { min-height: 44px; font-size: 12px; padding: 8px; }
+  .page-shell .reference-categories button > span { font-size: 10px; }
+  .page-shell .reference-grid { grid-template-columns: 1fr; }
+  .page-shell .reference-entry { gap: 12px; padding: 12px; }
+  .page-shell .reference-entry-icon { width: 44px; height: 48px; }
+  .page-shell .reference-entry-icon img { width: 40px; height: 40px; }
+  .page-shell .reference-entry-copy strong { font-size: 14px; }
+  .page-shell .reference-entry-copy > span { font-size: 12px; }
+  .page-shell .reference-entry-copy small { font-size: 11px; }
+  .page-shell .reference-source { flex-direction: column; align-items: flex-start; font-size: 11px; }
+  .page-shell .roulette-pool-toggle button { min-height: 44px; font-size: 12px; }
+  .page-shell .roulette-pool-toggle button span { font-size: 11px; }
+  .page-shell .roulette-spin-controls > p { font-size: 12px; }
+  .page-shell .roulette-spin-button { min-width: 0; width: 100%; max-width: 340px; min-height: 48px; font-size: 14px; }
+  .page-shell .roulette-pool-caption, .page-shell .roulette-player { font-size: 12px; }
+  .page-shell .roulette-result-copy strong { font-size: 15px; }
+  .page-shell .roulette-result-copy > span { font-size: 12px; }
+  .page-shell .roulette-howto li { font-size: 13px; }
+  .page-shell .roulette-howto > p { font-size: 11px; }
+  .page-shell .roulette-detail-button { min-height: 44px; font-size: 13px; }
+
+  .modal-backdrop { padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+  .modal { padding: 16px; max-height: calc(100dvh - max(16px, env(safe-area-inset-top) + env(safe-area-inset-bottom))); overscroll-behavior: contain; }
+  .modal .modal-header { position: sticky; top: -16px; z-index: 5; background: #202126; padding-block: 12px; margin-top: -16px; gap: 8px; }
+  .modal .modal-header > div { min-width: 0; }
+  .modal .modal-header h2 { font-size: 20px; overflow-wrap: anywhere; }
+  .modal .settings-grid { grid-template-columns: 1fr; gap: 14px; }
+  .modal .settings-grid > label, .modal .form-note { font-size: 12px; }
+  .modal .modal-description { font-size: 13px; }
+  .modal .checkbox-row { min-height: 44px; font-size: 13px; line-height: 1.5; }
+  .modal .checkbox-row input { width: 18px; height: 18px; flex-shrink: 0; }
+  .modal .modal-actions { flex-wrap: wrap; }
+  .modal .modal-actions > .button { flex: 1; }
+  .modal .item-details-zoom { font-size: 13px; gap: 6px; }
+  .modal .item-details-zoom > span { flex: 1 0 100%; }
+  .modal .item-details-intro h3 { font-size: 19px; }
+  .modal .item-details-intro > p { font-size: 13px; }
+  .modal .item-detail-badges > span { font-size: 12px; }
+  .modal .item-detail-metadata dt { font-size: 12px; }
+  .modal .item-detail-metadata dd { font-size: 13px; }
+  .modal .item-rich-text { font-size: 14px; }
+  .modal .item-details-source { font-size: 11px; }
+  .modal .item-details-content .item-details-top { gap: 14px; }
+  .modal .item-details-content .item-details-intro { flex-basis: 140px; }
+  .modal .board-presets strong { font-size: 13px; }
+  .modal .board-presets > button > span:last-child { font-size: 11px; }
+  .modal .catalogue-filters { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .modal .catalogue-filters select { max-width: none; width: 100%; }
+  .modal .quality-filter { gap: 8px 12px; font-size: 12px; }
+  .modal .quality-filter > div { gap: 6px; }
+  .modal .quality-filter > div > button { width: 40px; height: 44px; font-size: 14px; }
+  .modal .catalogue-selection { flex-wrap: wrap; font-size: 12px; }
+  .modal .catalogue-selection > div { flex-direction: row; gap: 16px; flex-wrap: wrap; }
+  .modal .catalogue-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: 50dvh; }
+  .modal .catalogue-item { min-height: 124px; padding-top: 32px; }
+  .modal .catalogue-item > span:not(.catalogue-check) { font-size: 11px; }
+  .modal .catalogue-item > small { font-size: 10px; }
+  .modal .catalogue-info-button { width: 28px; height: 28px; }
+  .modal .catalogue-info-button svg { width: 17px; height: 17px; }
+  .modal .catalogue-check { width: 18px; height: 18px; }
+  .modal .catalogue-list { grid-template-columns: 1fr; }
+  .modal .catalogue-list .catalogue-item { min-height: 90px; padding-left: 34px; }
+  .modal .catalogue-list .catalogue-item > span:not(.catalogue-check) { font-size: 13px; }
+  .modal .builder-options > label:first-child { font-size: 12px; flex-wrap: wrap; }
+  .modal .builder-options small { font-size: 11px; }
+  .modal .appearance-checkboxes { flex-direction: column; align-items: flex-start; gap: 0; }
+  .modal .theme-picker { flex-wrap: wrap; font-size: 12px; }
+  .modal .theme-picker > div { flex-wrap: wrap; gap: 8px; }
+  .modal .theme-picker button { width: 36px; height: 36px; }
+  .modal .board-code > div:last-of-type { flex-direction: column; }
+  .modal .board-code > p { font-size: 12px; }
+  .modal .help-steps p { font-size: 13px; }
+}
+
+@media (max-width: 359px) {
+  .page-shell .board-panel[data-icon-grid=true] .items-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .page-shell .board-view-switch { width: 100%; }
+  .page-shell .board-view-switch button { flex: 1; }
+  .dle-page .dle-heading h1 { font-size: 26px; }
+  .dle-page .dle-modes small { font-size: 10px; }
+}

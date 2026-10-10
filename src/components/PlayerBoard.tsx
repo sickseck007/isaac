@@ -4,10 +4,11 @@ import { Dices, Eye, EyeOff, Info, RotateCcw, Search, Shuffle, Sparkles, Undo2 }
 import type { BoardPreferences, GameState, Item, Player } from '../types';
 import { groupBoard, itemLabel } from '../lib/board';
 import IsaacFace from './IsaacFace';
+import { matchesItemSearch } from '../lib/search';
 import './PlayerBoard.css';
 
 const iconUrl = (item: Item) => `${import.meta.env.BASE_URL}${item.icon}`;
-const matches = (item: Item, query: string) => `${item.name} ${item.nameRu ?? ''} ${item.id} ${item.keywords ?? ''}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
+
 
 function ItemCard({ item, eliminated, showName, preferences, onClick, onDetails }: { item: Item; eliminated: boolean; showName: boolean; preferences: BoardPreferences; onClick: () => void; onDetails: (item: Item) => void }) {
   return <div className={`item-card-wrap ${eliminated ? 'is-flipped' : ''}`}><button className={`item-card ${eliminated && preferences.excludedStyle === 'flip' ? 'is-flipped' : ''} ${eliminated && preferences.excludedStyle === 'dim' ? 'is-dimmed' : ''} ${showName ? '' : 'no-name'}`} onClick={onClick} aria-label={`${eliminated ? 'Вернуть' : 'Исключить'} ${item.name}`} aria-pressed={eliminated} title={`${item.name}${item.nameRu ? ` · ${item.nameRu}` : ''}`} data-item-id={item.id}>
@@ -39,7 +40,7 @@ type Props = {
 export default function PlayerBoard({ game, player, items, query, compact, controls, canUndo, onToggle, onReset, onUndo, onDetails, onNew, onSecret, onClearSearch }: Props) {
   const [onlyRemaining, setOnlyRemaining] = useState(false);
   const eliminated = new Set(player.eliminated);
-  const visible = items.filter(item => matches(item, query) && (!(onlyRemaining || game.preferences.excludedStyle === 'hide') || !eliminated.has(item.id)));
+  const visible = items.filter(item => matchesItemSearch(item, query) && (!(onlyRemaining || game.preferences.excludedStyle === 'hide') || !eliminated.has(item.id)));
   const groups = groupBoard(visible, game.preferences);
   const showAll = () => {
     if (game.preferences.excludedStyle === 'hide') onReset();
