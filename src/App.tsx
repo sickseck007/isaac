@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import type { CSSProperties, FormEvent } from 'react';
-import { ArrowRight, Check, ChevronRight, CircleHelp, Dices, Grid2X2, Heart, BookOpen, Layers3, LockKeyhole, Minus, Plus, Search, Settings2, Shuffle, SlidersHorizontal, Sparkles, Undo2, Users, X } from 'lucide-react';
+import { ArrowRight, Check, ChevronRight, CircleHelp, Dices, Grid2X2, Heart, BookOpen, Layers3, LockKeyhole, Minus, Plus, Search, Settings2, Shuffle, SlidersHorizontal, Sparkles, Target, Undo2, Users, X } from 'lucide-react';
 import type { GameState, Item, Player, ReferenceEntry } from './types';
 import catalogue from './data/items.json';
 import { createGame, createPlayer, newBoard, normalizeGame, resetPlayer, toggleItem } from './lib/game';
@@ -12,6 +12,10 @@ import AppearanceSettings from './components/AppearanceSettings';
 import IsaacFace from './components/IsaacFace';
 import PlayerBoard from './components/PlayerBoard';
 import Reference, { REFERENCE_ENTRIES } from './components/Reference';
+
+const IsaacDle = lazy(() => import('./components/IsaacDle'));
+type Page = 'board' | 'roulette' | 'reference' | 'dle';
+const pageFromHash = (): Page => ({ '#reference': 'reference', '#roulette': 'roulette', '#dle': 'dle' } as Record<string, Page>)[window.location.hash] ?? 'board';
 
 const ITEMS = catalogue as Item[];
 const ITEM_MAP = new Map(ITEMS.map(item => [item.id, item]));
@@ -54,7 +58,7 @@ function Settings({ game, onSave, onClose }: { game: GameState; onSave: (game: G
 
 export default function App() {
   const [game, setGame] = useState<GameState>(readGame);
-  const [page, setPage] = useState<'board' | 'roulette' | 'reference'>(() => window.location.hash === '#reference' ? 'reference' : window.location.hash === '#roulette' ? 'roulette' : 'board');
+  const [page, setPage] = useState<Page>(pageFromHash);
   const [modal, setModal] = useState<'settings' | 'catalogue' | 'help' | 'new' | null>(null);
   const [query, setQuery] = useState('');
   const [history, setHistory] = useState<GameState[]>([]);
@@ -64,12 +68,13 @@ export default function App() {
   const player = game.players.find(p => p.id === game.activePlayerId) ?? game.players[0];
   const boardItems = useMemo(() => game.boardIds.map(id => ITEM_MAP.get(id)).filter((i): i is Item => !!i), [game.boardIds]);
   const allBoards = page === 'board' && game.preferences.boardView === 'all';
+  const dlePage = page === 'dle';
   const featured = [118, 331, 182].map(id => ITEM_MAP.get(id)).filter((i): i is Item => !!i);
 
   useEffect(() => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(game)); setStorageFailed(false); } catch { setStorageFailed(true); } }, [game]);
   useEffect(() => { if (!toast) return; const timer = setTimeout(() => setToast(''), 3000); return () => clearTimeout(timer); }, [toast]);
-  useEffect(() => { const update = () => setPage(window.location.hash === '#reference' ? 'reference' : window.location.hash === '#roulette' ? 'roulette' : 'board'); window.addEventListener('hashchange', update); return () => window.removeEventListener('hashchange', update); }, []);
-  const navigate = (next: 'board' | 'roulette' | 'reference') => { setPage(next); window.location.hash = next; };
+  useEffect(() => { const update = () => setPage(pageFromHash()); window.addEventListener('hashchange', update); return () => window.removeEventListener('hashchange', update); }, []);
+  const navigate = (next: Page) => { setPage(next); window.location.hash = next; };
   const record = (next: GameState) => { setHistory(h => [...h.slice(-19), game]); setGame(next); };
   const undo = () => { const previous = history.at(-1); if (previous) { setGame(previous); setHistory(h => h.slice(0, -1)); setToast('Последнее действие отменено'); } };
   const selectPlayer = (id: string) => { if (id !== game.activePlayerId) setHistory([]); setGame(g => ({ ...g, activePlayerId: id })); setQuery(''); };
@@ -91,16 +96,16 @@ export default function App() {
   return <>
     <header className="site-header"><div className="header-inner">
       <a className="brand" href="#board" aria-label="Isaac Guess Club — игровое поле"><span className="brand-icon"><IsaacFace /></span><span className="brand-type">ISAAC<span>GUESS CLUB<span className="brand-dot">✦</span></span></span></a>
-      <nav className="main-nav" aria-label="Страницы игры"><button className={page === 'board' ? 'active' : ''} onClick={() => navigate('board')} aria-current={page === 'board' ? 'page' : undefined}><Grid2X2 size={17} /> Игровое поле</button><button className={page === 'roulette' ? 'active' : ''} onClick={() => navigate('roulette')} aria-current={page === 'roulette' ? 'page' : undefined}><Dices size={19} /> Рулетка</button><button className={page === 'reference' ? 'active' : ''} onClick={() => navigate('reference')} aria-current={page === 'reference' ? 'page' : undefined}><BookOpen size={17} /> Справочник</button></nav>
+      <nav className="main-nav" aria-label="Страницы игры"><button className={page === 'board' ? 'active' : ''} onClick={() => navigate('board')} aria-current={page === 'board' ? 'page' : undefined}><Grid2X2 size={17} /> Игровое поле</button><button className={page === 'roulette' ? 'active' : ''} onClick={() => navigate('roulette')} aria-current={page === 'roulette' ? 'page' : undefined}><Dices size={19} /> Рулетка</button><button className={`dle-nav-button ${dlePage ? 'active' : ''}`} onClick={() => navigate('dle')} aria-current={dlePage ? 'page' : undefined}><Target size={17} /> Угадай предмет</button><button className={page === 'reference' ? 'active' : ''} onClick={() => navigate('reference')} aria-current={page === 'reference' ? 'page' : undefined}><BookOpen size={17} /> Справочник</button></nav>
       <button className="help-button" onClick={() => setModal('help')}><CircleHelp size={18} /><span>Как играть</span></button>
     </div></header>
-    <main className={`page-shell ${allBoards ? 'has-overview' : ''}`}>
+    <main className={`page-shell ${allBoards ? 'has-overview' : dlePage ? 'has-dle' : ''}`}>
       <section className="hero"><div><div className="eyebrow hero-eyebrow"><span /> THE BINDING OF ISAAC · REPENTANCE</div><h1>Знакомый предмет.<br /><span>Неочевидный ответ.</span></h1><p>Хорошие вопросы. Смелые догадки. И немного удачи.</p></div><div className="hero-art" aria-hidden="true"><div className="hero-orbit" /><span className="hero-star star-one">✦</span><span className="hero-star star-two">✧</span><div className="hero-item-stack">{featured.map((item, i) => <div key={item.id} className={`hero-item hero-item-${i}`}><img src={iconUrl(item)} alt="" /><span>?</span></div>)}</div><span className="hero-art-caption">{ITEMS.length} предметов. Тот самый — один.</span></div></section>
       {storageFailed && <div className="storage-warning" role="status">Браузер не разрешает сохранять игру. До закрытия страницы всё работает, но прогресс может потеряться.</div>}
       {page === 'board' && <div className="board-view-bar"><div className="board-view-switch" role="group" aria-label="Вид игрового поля"><button aria-pressed={game.preferences.boardView === 'all'} onClick={() => setBoardView('all')}><Users size={16} /> Все поля</button><button aria-pressed={game.preferences.boardView === 'single'} onClick={() => setBoardView('single')}><Grid2X2 size={16} /> По одному</button></div><span className="board-view-caption">{allBoards ? 'Все друзья на одном экране. Каждый исключает свои карточки.' : 'Переключай игрока слева, чтобы открыть его поле.'}</span>{allBoards && <button className="text-button" onClick={() => setModal('settings')}><Settings2 size={16} /> Настроить игроков</button>}</div>}
-      <div className={`game-layout ${allBoards ? 'is-overview' : ''}`}>
+      <div className={`game-layout ${allBoards ? 'is-overview' : dlePage ? 'is-dle' : ''}`}>
 
-        {!allBoards && <aside className="players-panel"><div className="panel-label"><span>ЗА СТОЛОМ</span><span className="count-badge">{game.players.length}</span></div>
+        {!allBoards && !dlePage && <aside className="players-panel"><div className="panel-label"><span>ЗА СТОЛОМ</span><span className="count-badge">{game.players.length}</span></div>
           <div className="player-list">{game.players.map((p, index) => <button className={`player-button ${p.id === player.id ? 'active' : ''}`} key={p.id} onClick={() => selectPlayer(p.id)} aria-pressed={p.id === player.id} aria-label={`Поле: ${p.name}`} style={{ '--player-color': p.color } as CSSProperties}><span className="player-avatar"><IsaacFace /></span><span className="player-info"><strong>{p.name}</strong><span>{boardItems.length - p.eliminated.length} из {boardItems.length} осталось</span></span><span className="player-index">0{index + 1}</span>{p.id === player.id && <ChevronRight className="player-chevron" size={16} />}</button>)}</div>
           <button className="manage-players" onClick={() => setModal('settings')}><Settings2 size={16} /> Настроить игроков</button>
           <div className="sidebar-divider" />
@@ -109,7 +114,7 @@ export default function App() {
           <div className="local-status"><span /> Свои люди. Один браузер.</div>
         </aside>}
 
-        <div className="main-panel">{page === 'board' ? allBoards ? <>
+        <div className="main-panel">{dlePage ? <Suspense fallback={<p className="item-details-status" role="status">Загружаем загадки…</p>}><IsaacDle items={ITEMS} onDetails={setDetailItem} /></Suspense> : page === 'board' ? allBoards ? <>
           <div className="overview-controls">{boardControls}<div className="overview-actions"><button className="text-button muted" disabled={!history.length} onClick={undo} title="Отменить последнее действие"><Undo2 size={15} /> Назад</button><button className="button button-primary" onClick={() => setModal('new')}><Shuffle size={16} /> Новое поле</button></div></div>
           <div className="boards-overview" style={{ '--board-count': Math.min(game.players.length, 3) } as CSSProperties}>{game.players.map(p => renderBoard(p, true))}</div>
         </> : renderBoard(player, false) : page === 'reference' ? <Reference onDetails={setDetailItem} /> : <Roulette key={player.id} items={ITEMS} boardItems={boardItems} player={player} onDetails={setDetailItem} onPick={id => { updatePlayer({ secretItemId: id, secretRevealed: true }); setToast('Предмет выбран. Теперь пусть друзья угадывают!'); }} onToggleSecret={() => updatePlayer({ secretRevealed: !player.secretRevealed })} />}</div>

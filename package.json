@@ -9,6 +9,7 @@
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run src",
     "test:e2e": "playwright test",
+    "build:clues": "node scripts/build-dle-clues.mjs",
     "import:dead-god": "node scripts/import-dead-god.mjs"
   },
   "dependencies": {

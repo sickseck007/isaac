@@ -157,3 +157,4 @@ const settings = {
 write('public/data/dead-god-settings.json', settings);
 write('public/data/dead-god-provenance.json', { source: 'https://dead-god.ru/', inputFilename: basename(input), inputSha256: createHash('sha256').update(source).digest('hex'), importedAt: new Date().toISOString(), recordCount: records.length, counts, gameItemsMatched: Object.keys(details).length, linkedReferences, missingIllustrations, unresolvedReferences: [...unresolvedReferences].sort(), scope: 'All item-data entries and settings present in the user-provided homepage HTML. Separate pages and companion saved-resource files were not included in this upload.', sourceAuthorizedByUser: true });
 console.log(JSON.stringify({ records: records.length, counts, gameDescriptions: Object.keys(details).length, extraDescriptions: Object.keys(extraDetails).length, linkedReferences, missingIllustrations, unresolvedReferences: unresolvedReferences.size }));
+await import('./build-dle-clues.mjs');

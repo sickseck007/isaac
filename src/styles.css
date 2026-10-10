@@ -11,3 +11,6 @@
 
 @media(max-width:540px){.hero-art{display:none}.item-name{font-size:8px}}
 @media(min-width:801px){.item-name{font-size:10px}}
+
+@media(min-width:541px) and (max-width:900px){.site-header:has(.dle-nav-button){height:126px}.site-header:has(.dle-nav-button) .header-inner{display:grid;grid-template-columns:1fr auto;gap:10px;align-content:center}.site-header:has(.dle-nav-button) .main-nav{grid-column:1/-1;grid-row:2;justify-content:center}.site-header:has(.dle-nav-button) .help-button{grid-column:2;grid-row:1}}
+@media(max-width:540px){.site-header:has(.dle-nav-button){height:153px}.site-header:has(.dle-nav-button) .main-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.site-header:has(.dle-nav-button) .main-nav button{padding:8px 9px}}
