@@ -169,12 +169,12 @@ test('classic flips new comparisons in sequence, waits for victory, and does not
   await guess(page, 'Sacred Heart');
   const cells = page.locator('.dle-winning-row .dle-cell');
   await expect(cells).toHaveCount(8);
-  expect(await cells.evaluateAll(elements => elements.map(el => Number.parseFloat(getComputedStyle(el).animationDelay)))).toEqual([0, .12, .24, .36, .48, .6, .72, .84]);
+  expect(await cells.evaluateAll(elements => elements.map(el => Number.parseFloat(getComputedStyle(el).animationDelay)))).toEqual([0, .28, .56, .84, 1.12, 1.4, 1.68, 1.96]);
   await expect(page.locator('.dle-result')).toHaveCount(0);
   await expect(page.getByRole('combobox', { name: 'Ваш ответ — предмет' })).toHaveAttribute('aria-disabled', 'true');
   const visible = await page.evaluate(() => {
     for (const animation of document.getAnimations()) {
-      if (animation instanceof CSSAnimation && animation.animationName.startsWith('dle-flip')) animation.currentTime = 400;
+      if (animation instanceof CSSAnimation && animation.animationName.startsWith('dle-flip')) animation.currentTime = 700;
     }
     const cells = document.querySelectorAll('.dle-winning-row .dle-cell');
     return [getComputedStyle(cells[0].querySelector('span')!).visibility, getComputedStyle(cells[7].querySelector('span')!).visibility,

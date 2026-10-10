@@ -27,7 +27,7 @@ const readState = (pools: ReturnType<typeof modePools>) => {
 
 function MatchCell({ cell, index, flipping, onComplete }: { cell: Comparison; index: number; flipping: boolean; onComplete?: () => void }) {
   const label = { exact: 'Совпадает', partial: 'Частично совпадает', wrong: 'Не совпадает' }[cell.match];
-  return <td className={`dle-cell match-${cell.match}${flipping ? ' dle-flipping' : ''}`} style={{ '--flip-delay': `${index * 120}ms` } as CSSProperties} onAnimationEnd={event => { if (event.animationName === 'dle-flip' && event.target === event.currentTarget) onComplete?.(); }} data-category={cell.key} data-match={cell.match} aria-label={`${cell.label}: ${cell.value}. ${label}${cell.direction === 'up' ? '. У загадки качество выше' : cell.direction === 'down' ? '. У загадки качество ниже' : ''}`}>
+  return <td className={`dle-cell match-${cell.match}${flipping ? ' dle-flipping' : ''}`} style={{ '--flip-delay': `${index * 280}ms` } as CSSProperties} onAnimationEnd={event => { if (event.animationName === 'dle-flip' && event.target === event.currentTarget) onComplete?.(); }} data-category={cell.key} data-match={cell.match} aria-label={`${cell.label}: ${cell.value}. ${label}${cell.direction === 'up' ? '. У загадки качество выше' : cell.direction === 'down' ? '. У загадки качество ниже' : ''}`}>
     <span>{cell.value}</span>
     <small>{cell.direction === 'up' ? <ArrowUp size={18} aria-label="Качество выше" /> : cell.direction === 'down' ? <ArrowDown size={18} aria-label="Качество ниже" /> : cell.match === 'exact' ? <Check size={13} /> : cell.match === 'partial' ? '≈' : <X size={12} />}</small>
   </td>;
