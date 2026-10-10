@@ -3,7 +3,7 @@ import type { BoardPreferences, Item } from '../types';
 export const DEFAULT_PREFERENCES: BoardPreferences = {
   boardView: 'all',
   sort: 'random', groupBy: 'none', nameLanguage: 'en', excludedStyle: 'flip',
-  theme: 'basement', showQuality: true, showIds: false, iconGrid: true, sampling: 'random',
+  theme: 'basement', showQuality: true, showIds: true, iconGrid: true, sampling: 'random',
 };
 
 export const BOARD_THEMES = [
@@ -30,7 +30,7 @@ export function normalizePreferences(value: unknown): BoardPreferences {
     excludedStyle: choice(p.excludedStyle, ['flip', 'dim', 'hide'], 'flip'),
     theme: choice(p.theme, BOARD_THEMES.map(t => t.id), 'basement'),
     showQuality: typeof p.showQuality === 'boolean' ? p.showQuality : true,
-    showIds: typeof p.showIds === 'boolean' ? p.showIds : false,
+    showIds: typeof p.showIds === 'boolean' ? p.showIds : true,
     iconGrid: typeof p.iconGrid === 'boolean' ? p.iconGrid : true,
     sampling: choice(p.sampling, ['random', 'balanced'], 'random'),
   };

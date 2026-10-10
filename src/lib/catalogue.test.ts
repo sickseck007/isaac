@@ -41,4 +41,25 @@ describe('imported Dead God catalogue', () => {
     expect(source.gameItemsMatched).toBe(718);
     expect(source.unresolvedReferences).toEqual([]);
   });
+
+  it('labels every initially available collectible without mislabelling achievement unlocks', () => {
+    const source: { key: string; category: string; fields: Record<string, { text: string }[]> }[] = JSON.parse(readFileSync('public/data/dead-god-all.json', 'utf8'));
+    const bundled = JSON.parse(readFileSync('src/data/itemDetails.json', 'utf8'));
+    let initiallyAvailable = 0;
+    for (const record of source.filter(record => record.category === 'item')) {
+      const text = (key: string) => (record.fields[key] ?? []).map(value => value.text.trim()).filter(Boolean).join(' ');
+      const detail = JSON.parse(readFileSync(`public/data/descriptions/${record.key}.json`, 'utf8'));
+      const opening = detail.sections.find((section: { title: string }) => section.title === 'Как открыть');
+      const hasCondition = ['data-opening-achievment', 'data-opening-character', 'data-opening-ending', 'other-opening'].some(key => text(key) && text(key) !== 'none');
+      if (hasCondition) {
+        expect(opening?.html ?? '', record.key).not.toContain('Открыт с начала');
+      } else if (!text('data-opening') || text('data-opening') === 'Открыто со старта') {
+        expect(opening?.html, record.key).toBe('<p>Открыт с начала.</p>');
+        initiallyAvailable++;
+      }
+      const id = record.key.slice('item-'.length);
+      if (bundled[id]) expect(detail, record.key).toEqual(bundled[id]);
+    }
+    expect(initiallyAvailable).toBe(441);
+  });
 });

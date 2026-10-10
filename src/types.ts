@@ -51,6 +51,7 @@ export type Player = {
 
 export type GameState = {
   version: 1;
+  preferencesVersion: 1;
   players: Player[];
   activePlayerId: string;
   boardIds: number[];

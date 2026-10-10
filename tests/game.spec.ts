@@ -376,6 +376,71 @@ test('source descriptions retain unlocks and open references across categories',
   await expect(page.getByRole('dialog', { name: 'Плацебо' })).toContainText('Placebo');
 });
 
+test('initial availability and description zoom work on desktop and mobile', async ({ page }) => {
+  await openBoard(page);
+  await page.getByRole('button', { name: 'Справочник', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Поиск в справочнике' }).fill('Mitre');
+  await page.getByRole('button', { name: 'Справочник: Mitre', exact: true }).click();
+  const details = page.getByRole('dialog');
+  await expect(details).toContainText('Открыт с начала.');
+  await expect(details.getByRole('heading', { name: 'Как открыть', exact: true })).toBeVisible();
+  const increase = details.getByRole('button', { name: 'Увеличить масштаб описания' });
+  const decrease = details.getByRole('button', { name: 'Уменьшить масштаб описания' });
+  const reset = details.getByRole('button', { name: 'Сбросить масштаб описания' });
+  const scale = details.getByLabel('Текущий масштаб');
+  const textHeight = () => details.getByRole('heading', { name: 'Как открыть', exact: true }).evaluate(el => el.getBoundingClientRect().height);
+  const initialHeight = await textHeight();
+  await expect(decrease).toBeDisabled();
+  await increase.click();
+  await expect(scale).toHaveText('125%');
+  await expect.poll(textHeight).toBeGreaterThan(initialHeight * 1.2);
+  await decrease.click();
+  await expect(scale).toHaveText('100%');
+  for (let step = 0; step < 4; step++) await increase.click();
+  await expect(scale).toHaveText('200%');
+  await expect(increase).toBeDisabled();
+  await expect.poll(textHeight).toBeGreaterThan(initialHeight * 1.9);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expectNoHorizontalOverflow(page);
+  expect(await details.evaluate(el => el.scrollWidth - el.clientWidth)).toBeLessThanOrEqual(1);
+  await reset.click();
+  await expect(scale).toHaveText('100%');
+  await expect(reset).toBeDisabled();
+  await page.keyboard.press('Escape');
+  await expect(details).toHaveCount(0);
+});
+
+test('card IDs return to saved fields once without changing card size or progress', async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto('/');
+  await expect(page.locator('.item-id-label')).toHaveCount(90);
+  const first = page.locator('.item-card').first();
+  const height = await first.evaluate(el => el.getBoundingClientRect().height);
+  expect(height).toBe(64);
+  await first.click();
+  const boardIds = await page.evaluate(() => {
+    const key = 'isaac-guess-club:v1';
+    const saved = JSON.parse(localStorage.getItem(key)!);
+    saved.preferences.showIds = false;
+    delete saved.preferencesVersion;
+    localStorage.setItem(key, JSON.stringify(saved));
+    return saved.boardIds;
+  });
+  await page.reload();
+  await expect(page.locator('.item-id-label')).toHaveCount(90);
+  await expect(first).toHaveAttribute('aria-pressed', 'true');
+  expect(await first.evaluate(el => el.getBoundingClientRect().height)).toBe(height);
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).boardIds)).toEqual(boardIds);
+  await page.getByRole('button', { name: 'Настроить поле', exact: true }).click();
+  const settings = page.getByRole('dialog', { name: 'Ваша игра, ваши правила' });
+  await settings.getByRole('checkbox', { name: 'Показывать ID', exact: true }).uncheck();
+  await settings.getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await page.reload();
+  await expect(page.locator('.item-id-label')).toHaveCount(0);
+  await expect(first).toHaveAttribute('aria-pressed', 'true');
+  expect(await first.evaluate(el => el.getBoundingClientRect().height)).toBe(height);
+});
+
 test('quality, source pools, tags and Greed mode determine the created set', async ({ page }) => {
   await openBoard(page);
   await page.getByRole('button', { name: /^Набор предметов/ }).click();

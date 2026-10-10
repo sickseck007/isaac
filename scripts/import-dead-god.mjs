@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { basename, resolve } from 'node:path';
 import { load } from 'cheerio';
+import { normalizeUnlockSections } from './lib/unlocks.mjs';
 
 const input = process.argv[2];
 if (!input) throw new Error('Usage: node scripts/import-dead-god.mjs <saved dead-god.ru HTML>');
@@ -118,6 +119,7 @@ for (const record of records) {
   }
   if (text('data-is-quest')) metadata.push({ label: 'Особый предмет', value: 'Квестовый' });
   const sections = [['data-description', 'Эффекты и подробности'], ['data-synergies', 'Синергии и взаимодействия'], ['data-bugs', 'Баги и особенности'], ['data-opening', 'Как открыть']].map(([key, title]) => ({ title, html: allHtml(key) })).filter(section => section.html.trim());
+  normalizeUnlockSections(record, sections);
   if (!sections.length) sections.push({ title: 'Описание', html: '<p>В сохранённой версии справочника подробное описание отсутствует.</p>' });
   const description = { sourceUrl: 'https://dead-god.ru/', nameRu: record.nameRu, tagline: text('data-ingame-description-rus') || text('data-ingame-description'), taglineOriginal: text('data-ingame-description'), metadata, sections };
   writeFileSync(`public/data/descriptions/${record.key}.json`, JSON.stringify(description) + '\n');

@@ -6,6 +6,21 @@ import type { Item } from '../types';
 const items: Item[] = Array.from({ length: 50 }, (_, index) => ({ id: index + 1, name: `Item ${index + 1}`, nameRu: `Предмет ${index + 1}`, quality: (index % 5) as Item['quality'], type: index % 2 ? 'active' : 'passive', icon: `items/${index + 1}.png` }));
 
 describe('portable fields', () => {
+  it('restores IDs once in existing fields and preserves later explicit choices', () => {
+    const game = createGame(items);
+    game.players[0].eliminated = [game.boardIds[0]];
+    game.players[1].secretItemId = items[0].id;
+    game.preferences.showIds = false;
+    const { preferencesVersion: _preferencesVersion, ...legacy } = game;
+    const restored = normalizeGame(legacy, items)!;
+    expect(restored.preferences.showIds).toBe(true);
+    expect(restored.boardIds).toEqual(game.boardIds);
+    expect(restored.players).toEqual(game.players);
+    restored.preferences.showIds = false;
+    expect(normalizeGame(restored, items)?.preferences.showIds).toBe(false);
+    expect(createGame(items).preferences.showIds).toBe(true);
+  });
+
   it('round-trips the precise order without sharing player state', () => {
     const board = [50, 1, 17, 9];
     expect(decodeBoard(encodeBoard(board), new Set(items.map(i => i.id)))).toEqual(board);

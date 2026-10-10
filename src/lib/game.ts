@@ -73,6 +73,7 @@ export function createGame(items: Item[]): GameState {
   const boardSize = Math.min(30, poolIds.length);
   return {
     version: 1,
+    preferencesVersion: 1,
     players,
     activePlayerId: players[0].id,
     boardIds: randomSample(poolIds, boardSize),
@@ -139,8 +140,13 @@ export function normalizeGame(value: unknown, items: Item[]): GameState | null {
   }
 
   const maxSize = Math.min(1000, poolIds.length);
+  const preferences = normalizePreferences(value.preferences);
+  // Restore IDs once for existing fields; later explicit visibility choices
+  // remain intact after reloads, without resetting player progress.
+  if (value.preferencesVersion !== 1) preferences.showIds = true;
   return {
     version: 1,
+    preferencesVersion: 1,
     players,
     activePlayerId: typeof value.activePlayerId === 'string' && playerIds.has(value.activePlayerId)
       ? value.activePlayerId : players[0].id,
@@ -149,7 +155,7 @@ export function normalizeGame(value: unknown, items: Item[]): GameState | null {
     boardSize: clampInteger(value.boardSize, Math.min(30, maxSize), 1, maxSize),
     columns: clampInteger(value.columns, 6, 4, 10),
     showNames: typeof value.showNames === 'boolean' ? value.showNames : true,
-    preferences: normalizePreferences(value.preferences),
+    preferences,
   };
 }
 
