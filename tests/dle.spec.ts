@@ -55,7 +55,7 @@ test('classic compares stats, Lost rules and quality, persists progress, and awa
   await page.getByRole('combobox', { name: 'Ваш ответ — предмет' }).fill('Godhead');
   await expect(page.getByRole('option', { name: 'Ответ: Godhead', exact: true })).toHaveCount(0);
   await guess(page, 'Sacred Heart');
-  await expect(page.locator('.dle-result')).toContainText('Угадано за 3 попытки · +84 очков');
+  await expect(page.locator('.dle-result')).toContainText('Угадано за 3 попытки · +96 очков');
   await expect(page.locator('.dle-winning-row [data-match="exact"]')).toHaveCount(8);
   await expect(page.getByRole('combobox', { name: 'Ваш ответ — предмет' })).toHaveCount(0);
   await page.locator('.dle-result').getByRole('button', { name: 'Описание', exact: true }).click();
@@ -63,7 +63,7 @@ test('classic compares stats, Lost rules and quality, persists progress, and awa
   await page.keyboard.press('Escape');
   await page.reload();
   await expect(page.locator('.dle-result')).toContainText('Sacred Heart');
-  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:dle:v1')!).stats.classic)).toEqual({ solved: 1, skipped: 0, points: 84 });
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:dle:v1')!).stats.classic)).toEqual({ solved: 1, skipped: 0, points: 96 });
   await page.getByRole('button', { name: 'Ещё загадка' }).click();
   await expect(page.locator('.dle-table tbody tr')).toHaveCount(0);
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:dle:v1')!).rounds.classic.targetId)).not.toBe(182);
@@ -79,7 +79,15 @@ test('effect and emoji puzzles hide the answer, reveal hints, and maintain indep
   await expect(page.getByText('Тип: Пассивный', { exact: true })).toBeVisible();
   await guess(page, 'The Sad Onion');
   await page.getByRole('button', { name: /^Эмодзи/ }).click();
+  await expect(page.locator('.dle-emoji-clue>span')).toHaveText(['🥄', '?', '?']);
+  await guess(page, 'The Sad Onion');
+  await expect(page.locator('.dle-emoji-clue>span')).toHaveText(['🥄', '🌀', '?']);
+  await expect(page.locator('.dle-round-meta')).toContainText('За победу: 100');
+  await page.reload();
+  await expect(page.locator('.dle-emoji-clue>span')).toHaveText(['🥄', '🌀', '?']);
+  await guess(page, 'The Inner Eye');
   await expect(page.locator('.dle-emoji-clue>span')).toHaveText(['🥄', '🌀', '🎯']);
+  await expect(page.locator('.dle-round-meta')).toContainText('За победу: 96');
   await expect(page.locator('.dle-page')).not.toContainText('Spoon Bender');
   await page.getByRole('combobox', { name: 'Ваш ответ — предмет' }).fill('сгибатель ложек');
   await page.getByRole('combobox', { name: 'Ваш ответ — предмет' }).press('Enter');
@@ -88,7 +96,7 @@ test('effect and emoji puzzles hide the answer, reveal hints, and maintain indep
   await expect(page.locator('.dle-guess-history>div')).toHaveCount(1);
   await expect(page.getByText('Тип: Пассивный', { exact: true })).toBeVisible();
   await guess(page, 'Brimstone');
-  await expect(page.locator('.dle-result')).toContainText('+77 очков');
+  await expect(page.locator('.dle-result')).toContainText('+90 очков');
   await page.reload();
   await expect(page.locator('.dle-result')).toContainText('Brimstone');
   expect(await page.evaluate(() => { const s = JSON.parse(localStorage.getItem('isaac-guess-club:dle:v1')!); return [s.stats.effects.solved, s.stats.emoji.solved, s.stats.classic.solved]; })).toEqual([1, 1, 0]);
@@ -138,4 +146,49 @@ test('all modes fit mobile and tablet, comparison scrolls locally, and friend fi
   await expect(page.locator('.item-card')).toHaveCount(90);
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).boardIds)).toEqual(board.boardIds);
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('isaac-guess-club:v1')!).players)).toEqual(board.players);
+});
+
+
+test('classic flips new comparisons in sequence, waits for victory, and does not replay saved rows', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await openDle(page);
+  await expect(page.getByRole('columnheader', { name: 'Добавлен в', exact: true })).toBeVisible();
+  // Pause on insertion to inspect the actual CSS timeline deterministically.
+  await page.evaluate(() => {
+    const observer = new MutationObserver(() => {
+      if (!document.querySelector('.dle-flipping')) return;
+      for (const animation of document.getAnimations()) {
+        if (animation instanceof CSSAnimation && animation.animationName.startsWith('dle-flip')) {
+          animation.pause(); animation.currentTime = 0;
+        }
+      }
+      observer.disconnect();
+    });
+    observer.observe(document.querySelector('.dle-page')!, { subtree: true, childList: true, attributes: true });
+  });
+  await guess(page, 'Sacred Heart');
+  const cells = page.locator('.dle-winning-row .dle-cell');
+  await expect(cells).toHaveCount(8);
+  expect(await cells.evaluateAll(elements => elements.map(el => Number.parseFloat(getComputedStyle(el).animationDelay)))).toEqual([0, .12, .24, .36, .48, .6, .72, .84]);
+  await expect(page.locator('.dle-result')).toHaveCount(0);
+  await expect(page.getByRole('combobox', { name: 'Ваш ответ — предмет' })).toHaveAttribute('aria-disabled', 'true');
+  const visible = await page.evaluate(() => {
+    for (const animation of document.getAnimations()) {
+      if (animation instanceof CSSAnimation && animation.animationName.startsWith('dle-flip')) animation.currentTime = 400;
+    }
+    const cells = document.querySelectorAll('.dle-winning-row .dle-cell');
+    return [getComputedStyle(cells[0].querySelector('span')!).visibility, getComputedStyle(cells[7].querySelector('span')!).visibility,
+      getComputedStyle(cells[0], '::after').opacity, getComputedStyle(cells[7], '::after').opacity];
+  });
+  expect(visible).toEqual(['visible', 'hidden', '0', '1']);
+  await page.evaluate(() => {
+    for (const animation of document.getAnimations()) {
+      if (animation instanceof CSSAnimation && animation.animationName.startsWith('dle-flip')) { animation.currentTime = 0; animation.play(); }
+    }
+  });
+  await expect(page.locator('.dle-result')).toContainText('+100 очков');
+  await expect(page.locator('.dle-flipping')).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator('.dle-result')).toContainText('+100 очков');
+  await expect(page.locator('.dle-flipping')).toHaveCount(0);
 });

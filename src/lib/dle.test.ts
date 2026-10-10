@@ -4,7 +4,7 @@ import clueData from '../data/dleClues.json';
 import emojiData from '../data/emojiClues.json';
 import type { Item } from '../types';
 import type { ClueMap, EmojiMap } from './dle';
-import { compareItems, compareSets, createDle, hintLevel, isFinished, modePools, nextDle, normalizeDle, revealDle, searchDleItems, submitDleGuess } from './dle';
+import { compareItems, compareSets, createDle, emojiVisibleCount, hintLevel, isFinished, modePools, nextDle, normalizeDle, revealDle, roundPoints, searchDleItems, submitDleGuess } from './dle';
 
 const items = catalogue as Item[];
 const clues = clueData as ClueMap;
@@ -38,6 +38,7 @@ describe('IsaacDle', () => {
     expect(compareItems(item(1), item(182), clues, 'tainted').find(cell => cell.key === 'quality')).toMatchObject({ match: 'wrong', direction: 'up' });
     expect(compareItems(item(182), item(1), clues, 'tainted').find(cell => cell.key === 'quality')).toMatchObject({ direction: 'down' });
     expect(compareItems(item(331), item(182), clues, 'tainted').find(cell => cell.key === 'pools')?.match).toBe('partial');
+    expect(compareItems(item(1), item(182), clues, 'tainted').find(cell => cell.key === 'collection')).toMatchObject({ label: 'Добавлен в', value: 'Rebirth', match: 'exact' });
     expect(compareItems(item(182), item(182), clues, 'tainted').every(cell => cell.match === 'exact')).toBe(true);
   });
 
@@ -64,7 +65,7 @@ describe('IsaacDle', () => {
     expect(submitDleGuess(wrong, -1, pools)).toBe(wrong);
     const win = submitDleGuess(wrong, 182, pools);
     expect(isFinished(win.rounds.classic)).toBe(true);
-    expect(win.stats.classic).toEqual({ solved: 1, skipped: 0, points: 92 });
+    expect(win.stats.classic).toEqual({ solved: 1, skipped: 0, points: 100 });
     expect(submitDleGuess(win, 182, pools)).toBe(win);
     expect(revealDle(win)).toBe(win);
     expect(win.rounds.icon).toEqual(state.rounds.icon);
@@ -84,8 +85,29 @@ describe('IsaacDle', () => {
     state.rounds.icon = { targetId: 105, guesses: [1, 2], revealed: false, hints: 1, rotation: 180 };
     expect(hintLevel(state.rounds.icon)).toBe(2);
     const win = submitDleGuess(state, 105, pools);
-    expect(win.stats.icon.points).toBe(69);
+    expect(win.stats.icon.points).toBe(86);
     expect(hintLevel({ ...state.rounds.icon, guesses: [1, 2, 3, 4, 5, 6], hints: 3 })).toBe(3);
+  });
+
+  it('keeps the first error free, charges later errors and hints, and floors the reward', () => {
+    const round = { targetId: 182, guesses: [], revealed: false, hints: 0, rotation: 90 };
+    expect(roundPoints(round)).toBe(100);
+    expect(roundPoints({ ...round, guesses: [182] })).toBe(100);
+    expect(roundPoints({ ...round, guesses: [1] })).toBe(100);
+    expect(roundPoints({ ...round, guesses: [1, 182] })).toBe(100);
+    expect(roundPoints({ ...round, guesses: [1, 2] })).toBe(96);
+    expect(roundPoints({ ...round, guesses: [1, 2, 182] })).toBe(96);
+    expect(roundPoints({ ...round, guesses: [1], hints: 1 })).toBe(90);
+    expect(roundPoints({ ...round, guesses: Array.from({ length: 40 }, (_, i) => i + 1) })).toBe(10);
+  });
+
+  it('reveals emoji one at a time, caps them, and reveals the complete answer on finishing', () => {
+    const round = { targetId: 3, guesses: [], revealed: false, hints: 0, rotation: 90 };
+    expect(emojiVisibleCount(round, 3)).toBe(1);
+    expect(emojiVisibleCount({ ...round, guesses: [1] }, 3)).toBe(2);
+    expect(emojiVisibleCount({ ...round, guesses: [1, 2, 4, 5] }, 3)).toBe(3);
+    expect(emojiVisibleCount({ ...round, guesses: [3] }, 3)).toBe(3);
+    expect(emojiVisibleCount({ ...round, revealed: true }, 3)).toBe(3);
   });
 
   it('restores mode, progress and settings while repairing invalid saves safely', () => {

@@ -2,3 +2,16 @@
 @media(max-width:700px){.dle-page{padding-top:25px}.dle-heading h1{font-size:30px}.dle-heading p{font-size:11px;max-width:270px}.dle-heading-mark{width:68px;height:79px;margin:0 8px}.dle-heading-mark>span{font-size:49px}.dle-modes{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dle-modes>button{padding:13px 10px;gap:9px}.dle-modes small{font-size:9px}.dle-toolbar>div{width:100%;justify-content:space-between}.dle-play-panel{padding:20px 15px}.dle-round-meta{gap:12px}.dle-effect-clue{font-size:13px;padding:17px}.dle-emoji-clue{padding:12px}.dle-emoji-clue>span{font-size:34px;margin:0 4px}.dle-search-input input{font-size:11px}.dle-search-input{padding:0 11px;gap:9px}.dle-search-input>span{display:none}.dle-result{gap:12px;padding:13px}.dle-result h2{font-size:18px}.dle-result>img{width:44px;height:44px}.dle-result>.text-button{flex-basis:100%;justify-content:flex-end}.dle-scoreboard{padding:17px 3px;gap:18px}.dle-score-note{flex-basis:100%;text-align:left;margin:0}.dle-legend{gap:12px}.dle-rules{padding:16px;font-size:11px}.dle-hints>div{justify-content:flex-start}.dle-search-results{max-height:330px;overflow:auto}.dle-modes strong{font-size:12px}}
 @media(max-width:540px){.dle-heading{gap:12px}.dle-heading .eyebrow{font-size:8px;letter-spacing:1.3px}.dle-heading-mark{display:none}.dle-toolbar .button{font-size:10px}.dle-icon-options{gap:13px}.dle-icon-options label{font-size:10px}}
 .dle-lost-rule{display:flex;align-items:center;gap:11px;flex-wrap:wrap;font-size:11px;color:#a98db6;margin:0 0 17px}.dle-lost-rule select{background:#25212b;border:1px solid #ffffff0b;color:#c9b2d0;padding:8px 10px;border-radius:7px;font-size:11px;max-width:100%;min-width:0}
+
+/* A neutral back hides both the colour and text until each tile turns over. */
+.dle-flipping{animation:dle-flip 500ms ease-in-out both;animation-delay:var(--flip-delay);transform-origin:center;will-change:transform}
+.dle-flipping::after{content:'?';position:absolute;inset:-1px;display:grid;place-items:center;border:1px solid #82737960;border-radius:7px;background:repeating-linear-gradient(45deg,#302a35,#302a35 8px,#342d39 8px,#342d39 16px);color:#ad93b2;font-size:28px;font-weight:800;animation:dle-flip-back 500ms linear both;animation-delay:var(--flip-delay)}
+.dle-flipping>span,.dle-flipping>small{animation:dle-flip-content 500ms linear both;animation-delay:var(--flip-delay)}
+@keyframes dle-flip{0%{transform:perspective(600px) rotateX(0)}49%{transform:perspective(600px) rotateX(90deg)}50%{transform:perspective(600px) rotateX(-90deg)}100%{transform:perspective(600px) rotateX(0)}}
+@keyframes dle-flip-back{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes dle-flip-content{0%,49%{visibility:hidden}50%,100%{visibility:visible}}
+.dle-reveal-status{text-align:center;font-size:11px;color:#ba9b87;margin:12px 0 -8px}
+.dle-emoji-clue>.dle-emoji-hidden{font-family:inherit;color:#776582;background:#ffffff05;border:1px dashed #77658255;border-radius:10px;min-width:58px;font-size:32px}
+.dle-emoji-symbol{animation:dle-emoji-appear 350ms ease-out both}
+@keyframes dle-emoji-appear{from{opacity:0;transform:translateY(8px) scale(.8)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.dle-flipping,.dle-flipping::after,.dle-flipping>span,.dle-flipping>small,.dle-emoji-symbol{animation:none!important}.dle-flipping::after{display:none}}

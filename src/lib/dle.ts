@@ -89,7 +89,8 @@ export function normalizeDle(value: unknown, pools: Record<DleMode, number[]>): 
 export const isSolved = (round: DleRound) => round.guesses.includes(round.targetId);
 export const isFinished = (round: DleRound) => round.revealed || isSolved(round);
 export const hintLevel = (round: DleRound) => Math.min(3, Math.floor(round.guesses.filter(id => id !== round.targetId).length / 2) + round.hints);
-export const roundPoints = (round: DleRound) => Math.max(10, 100 - Math.max(0, round.guesses.length - 1) * 8 - round.hints * 15);
+export const roundPoints = (round: DleRound) => Math.max(10, 100 - Math.max(0, round.guesses.filter(id => id !== round.targetId).length - 1) * 4 - round.hints * 10);
+export const emojiVisibleCount = (round: DleRound, total: number) => isFinished(round) ? total : Math.min(total, 1 + round.guesses.length);
 
 export function submitDleGuess(state: DleState, id: number, pools: Record<DleMode, number[]>): DleState {
   const round = state.rounds[state.mode];
@@ -130,7 +131,7 @@ export function compareItems(guess: Item, target: Item, clues: ClueMap, lostRule
   return [
     { key: 'type', label: 'Тип', value: TYPE_NAMES[guess.type], match: exact(guess.type === target.type) },
     { key: 'quality', label: 'Качество', value: String(guess.quality), match: exact(guess.quality === target.quality), ...(guess.quality < target.quality ? { direction: 'up' as const } : guess.quality > target.quality ? { direction: 'down' as const } : {}) },
-    set('collection', 'Коллекция', guess.collections, target.collections),
+    set('collection', 'Добавлен в', guess.collections, target.collections),
     set('pools', 'Пулы', guess.pools, target.pools),
     set('transformation', 'Превращения', guess.transformations, target.transformations),
     { ...set('stats', 'Статы', a.stats, b.stats), value: a.stats.join(', ') || 'Не указаны' },
